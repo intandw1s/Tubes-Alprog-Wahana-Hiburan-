@@ -10,7 +10,7 @@ int validasimenu() {
     int val;
     int array;
 
-    gets(angka);
+    scanf("%s",angka);
     array=strlen(angka);
 
     for(i=0;i<array; i++){
@@ -21,8 +21,10 @@ int validasimenu() {
         }
     }
 
-    if(salah>0){
+    if(salah>1){
         system("cls");
+        listmenu();
+        printf("\n");
         printf("\t\t\t\t||=================================================||\n");
         printf("\t\t\t\t||                                                 ||\n");
         printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
@@ -40,6 +42,8 @@ int validasimenu() {
         return val;
         }else{
             system("cls");
+            listmenu();
+            printf("\n");
             printf("\t\t\t\t||=================================================||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
@@ -55,9 +59,6 @@ int validasimenu() {
     }
 }
 
-int main (){
-    menu();
-}
 
 //INTRUKSI
 void intruksi(){
@@ -137,4 +138,19 @@ void menu(){
             system("cls");
 
 	 }
+}
+
+void listmenu(){
+    printf("\t\t\t\t+-------------------------------------------------+\n");
+    printf("\t\t\t\t|                                                 |\n");
+    printf("\t\t\t\t|                  LalaFund Land                  |\n");
+    printf("\t\t\t\t|                   MENU UTAMA                    |\n");
+    printf("\t\t\t\t|                                                 |\n");
+    printf("\t\t\t\t+-------------------------------------------------+\n");
+    printf("\t\t\t\t Silahkan Pilih Menu yang Ingin Anda  :\n\n");
+    printf("\t\t\t\t 1.Informasi Wahana\n");
+    printf("\t\t\t\t 2.Pemesanan\n");
+    printf("\t\t\t\t 3.Riwayat Pemesanan\n");
+    printf("\t\t\t\t 4.Intruksi\n");
+    printf("\t\t\t\t+-------------------------------------------------+\n");
 }

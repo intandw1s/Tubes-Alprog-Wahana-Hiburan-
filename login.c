@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "intruksi.c"
+#include "menu_utama.c"
 
 void masuk(){
 
@@ -23,7 +23,7 @@ void masuk(){
 	scanf("%s", password);
     printf("\t\t\t\t...................................................\n");
     system("cls");
-	if ((strcmp(username, "admin") == 0) && (strcmp(password, "LalaFundyipihepi") ==0)){
+	if ((strcmp(username, "admin") == 0) && (strcmp(password, "yipi") ==0)){
         intruksi();
 
 	}else {
