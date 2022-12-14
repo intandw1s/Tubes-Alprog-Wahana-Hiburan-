@@ -7,12 +7,14 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "login.c"
+//#include "login.c"
+#include "./admin/crud_admin.c"
 
 //MAIN
 int main(){
     system("COLOR 71");
-    masuk();
+    test();
+    //masuk();
     system("pause");
     return 0;
 }
