@@ -93,9 +93,12 @@ void wahanaAdmin(){
             editdata();
 	    break;
 	    case 3:
-            //detailAdmin();
+            lihatdata();
         break;
         case 4:
+            //hapusdata();
+        break;
+        case 5:
             exit(1);
         break;
 	    default:
@@ -277,6 +280,47 @@ void edit_valid(){
         default:
             printf("\nMaaf Kesalahan Input !");
             edit_valid();
+        break;
+    }
+}
+
+void lihatdata(){
+    FILE *view;
+	view = fopen("Data Wahana.txt","r");
+	int test=0;
+	system ("cls");
+	printf ("ID\tNAMA WAHANA\t\tKATEGORI\t\tHARGA DOMESTIK\t\tHARGA INTERNASIONAL\t\t\n");
+	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
+	{
+            printf("%d\t%s%10.2d\t\t%d\t\t%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
+            test++;
+
+	}
+	printf ("\nJumlah Wahana : %d",test);
+	fclose(view);
+
+	if(test==0)
+	{
+		system("cls");
+		printf ("\nData Kosong ! \n");
+	}
+        list_invalid();
+}
+
+void list_invalid(){
+    int pilihan;
+    printf("\n\nEnter 1 untuk menu utama dan 0 untuk keluar : ");
+    pilihan=validasiBil();
+    switch(pilihan){
+    	case 1:
+    	    wahanaAdmin();
+        break;
+        case 0:
+            close();
+        break;
+        default:
+            printf("\nMaaf Kesalahan Input !");
+        	list_invalid();
         break;
     }
 }
