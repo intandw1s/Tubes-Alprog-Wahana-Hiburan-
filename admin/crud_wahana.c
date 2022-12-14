@@ -14,7 +14,7 @@ struct tb_wahana {
 
 
 //Cek Bilangan
-float validasiBil(){
+/*float validasiBil(){
     int i = 0;
     int salah =0;
     int titik=0;
@@ -53,17 +53,62 @@ float validasiBil(){
         printf("\t\t\t\t||                                                 ||\n");
         printf("\t\t\t\t||=================================================||\n");
         printf("\t\t\t\t  Silahkan Masukkan Ulang : ");
-        validasiBil();
+        validasiBil1();
+    }else{
+        val = atof(angka);
+        return val;
+    }
+}*/
+
+float validasiBil1(){
+    int i = 0;
+    int salah =0;
+    int titik=0;
+    char angka[100];
+    float val;
+    int array;
+
+    scanf("%s", &angka);
+    array=strlen(angka);
+
+    if(angka[0]>=48 && angka[0]<=57){ // PEMBATAS PADA ASCII DIMANA 49-51 BERNILAI "0-9"
+
+    }else{
+        salah += 1;
+    }
+
+    for(i=1;i<array; i++){
+        if(angka[i]>=48 && angka[i]<=57){ // PEMBATAS PADA ASCII DIMANA 49-51 BERNILAI "0-9"
+
+        }else if(angka[i]==46){ // PEMBATAS PADA ASCII DIMANA 45 BERNILAI "."
+            titik += 1;
+        }else{
+            salah += 1;
+        }
+    }
+
+    if(salah>0 || titik>1){
+        printf("\n");
+        printf("\t\t\t\t||=================================================||\n");
+        printf("\t\t\t\t||                                                 ||\n");
+        printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
+        printf("\t\t\t\t||                                                 ||\n");
+        printf("\t\t\t\t||=================================================||\n");
+        printf("\t\t\t\t||                                                 ||\n");
+        printf("\t\t\t\t||     ^.^  MAAF MASUKKAN ANDA TIDAK VALID ^.^     ||\n");
+        printf("\t\t\t\t||                                                 ||\n");
+        printf("\t\t\t\t||=================================================||\n");
+        printf("\t\t\t\t  Silahkan Masukkan Ulang : ");
+        validasiBil1();
     }else{
         val = atof(angka);
         return val;
     }
 }
 
-int main(){
+/*int main(){
     wahanaAdmin();
-}
-
+}*/
 void wahanaAdmin(){
     int pilihan;
     printf("\t\t\t\t+-------------------------------------------------+\n");
@@ -79,9 +124,9 @@ void wahanaAdmin(){
     printf("\n\t\t\t\t[4]. Hapus Data Wahana");
     printf("\n\t\t\t\t[5]. Kembali");
     printf("\n\t\t\t\t[6]. Keluar");
-    printf("\t\t\t\t-------------------------------------------------\n");
+    printf("\n\t\t\t\t-------------------------------------------------\n");
     printf("\t\t\t\tMasukkan Pilihan Anda :");
-    pilihan=validasiBil();
+    pilihan=validasiBil1();
     printf("\n");
     system("cls");
 
@@ -93,10 +138,10 @@ void wahanaAdmin(){
             editdata();
 	    break;
 	    case 3:
-            lihatdata();
+            showwahana(kategori);
         break;
         case 4:
-            //hapusdata();
+            hapusdata();
         break;
         case 5:
             exit(1);
@@ -133,11 +178,11 @@ void tambahdata(){
 		printf ("masukan nama wahana : ");fflush(stdin);
         scanf ("%[^\n]",tambah.nama);
 		printf ("masukan kategori wahana : ");fflush(stdin);
-		tambah.kategori=validasiBil();
+		tambah.kategori=validasiBil1();
 		printf ("masukan harga domestik : ");fflush(stdin);
-		tambah.prc_dom=validasiBil();
+		tambah.prc_dom=validasiBil1();
 		printf ("masukan harga internasional : ");fflush(stdin);
-		tambah.prc_inter=validasiBil();
+		tambah.prc_inter=validasiBil1();
 		fprintf(ptr,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
 		fclose(ptr);
 
@@ -148,7 +193,7 @@ void tambahdata(){
 void add_invalid(){
     int pilihan;
     printf("\n\n\tEnter 1 untuk menu utama dan 0 untuk keluar : ");
-    pilihan=validasiBil();
+    pilihan=validasiBil1();
     switch(pilihan){
         case 1:
             wahanaAdmin();
@@ -172,7 +217,7 @@ void editdata(){
 	//system("cls");
 
 	printf ("Masukan ID Wahana : ");
-	cek.id=validasiBil();
+	cek.id=validasiBil1();
 	while(fscanf (lama,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 	{
 		if(tambah.id == cek.id)
@@ -186,7 +231,7 @@ void editdata(){
 				printf("\n[3]. Harga Domestik");
 				printf("\n[4]. Harga Internasional");
 				printf("\nInput Pilihan : ");
-                pilih=validasiBil();
+                pilih=validasiBil1();
 
 				if(pilih == 1)
 				{
@@ -248,7 +293,7 @@ void editdata(){
 void edit_invalid(){
     int pilih;
         printf("\nInput 0 untuk mencoba lagi, 1 untuk ke menu utama dan 2 untuk keluar :");
-        pilih=validasiBil();
+        pilih=validasiBil1();
         switch(pilih){
             case 0:
                 editdata();
@@ -269,7 +314,7 @@ void edit_invalid(){
 void edit_valid(){
     int pilihan;
     printf("\n\n\nInput 1 untuk ke menu utama dan 0 untuk keluar :");
-    pilihan=validasiBil();
+    pilihan=validasiBil1();
     switch(pilihan){
         case 1:
             wahanaAdmin();
@@ -289,20 +334,28 @@ void lihatdata(){
 	view = fopen("Data Wahana.txt","r");
 	int test=0;
 	system ("cls");
-	printf ("ID\tNAMA WAHANA\t\tKATEGORI\t\tHARGA DOMESTIK\t\tHARGA INTERNASIONAL\t\t\n");
 	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 	{
-            printf("%d\t%s%10.2d\t\t%d\t\t%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
+        printf("\t\t\t-------------------------\n");
+        printf("\n");
+        printf("\t\t\tID Wahana               : %d\n", tambah.id);
+        printf("\t\t\tNama Wahana             : %s\n", tambah.nama);
+        printf("\t\t\tKategori                : %d\n", tambah.kategori);
+        printf("\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
+        printf("\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
+        printf("\t\t\t-------------------------\n");
+        printf("\n");
+        printf("\n");
             test++;
 
 	}
-	printf ("\nJumlah Wahana : %d",test);
+	printf ("\n\t\t\tJumlah Wahana : %d",test);
 	fclose(view);
 
 	if(test==0)
 	{
 		system("cls");
-		printf ("\nData Kosong ! \n");
+		printf ("\n\t\t\tData Kosong ! \n");
 	}
         list_invalid();
 }
@@ -310,7 +363,7 @@ void lihatdata(){
 void list_invalid(){
     int pilihan;
     printf("\n\nEnter 1 untuk menu utama dan 0 untuk keluar : ");
-    pilihan=validasiBil();
+    pilihan=validasiBil1();
     switch(pilihan){
     	case 1:
     	    wahanaAdmin();
@@ -323,4 +376,126 @@ void list_invalid(){
         	list_invalid();
         break;
     }
+}
+/*void edit_valid(){
+    int pilihan;
+    printf("\n\n\nInput 1 untuk ke menu utama dan 0 untuk keluar :");
+    pilihan=validasiBil1();
+    switch(pilihan){
+        case 1:
+            wahanaAdmin();
+        break;
+        case 0:
+            close();
+        break;
+        default:
+            printf("\nMaaf Kesalahan Input !");
+            edit_valid();
+        break;
+    }
+}*/
+
+void hapusdata(){
+    FILE *lama, *baru;
+	int test=0;
+	lama = fopen("Data Wahana.txt","r");
+	baru = fopen("baru.txt","w");
+	system("cls");
+	printf("Input No. ID Wahana yang akan di hapus : ");
+	scanf("%d", &hapus.id);
+	while(fscanf (lama,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
+	{
+		if(tambah.id != hapus.id)
+		{
+			fprintf(baru,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
+		}
+		else{
+			test++;
+			printf("\nData Wahana No ID : %d dengan Nama : %s\n",tambah.id,tambah.nama);
+			printf("\nBerhasil dihapus dari Daftar !");
+		}
+	}
+	fclose(lama);
+	fclose(baru);
+	remove("Data Wahana.txt");
+	rename("baru.txt","Data Wahana.txt");
+    if(test==0){
+        printf("\nData tidak ditemukan !\a\a\a");
+        erase_invalid();
+    }
+    else{
+    	erase_valid();
+        }
+}
+
+void erase_invalid(){
+    int pilihan;
+    printf("\nInput 0 untuk mencoba lagi, 1 untuk ke menu utama and 2 untuk keluar :");
+    pilihan=validasiBil1();
+    switch(pilihan){
+    	case 0:
+    	    hapusdata();
+        break;
+        case 1:
+            wahanaAdmin();
+        break;
+        case 2:
+            close();
+        default:
+            printf("\nMaaf Kesalahan Input !");
+        	erase_invalid();
+        break;
+    }
+}
+
+void erase_valid(){
+    int pilihan;
+    printf("\nInput 1 untuk ke menu utama and 0 untuk keluar :");
+    pilihan=validasiBil1();
+    switch(pilihan){
+    	case 1:
+    	    hapusdata();
+        break;
+        case 0:
+            close();
+        break;
+        default:
+            printf("\nMaaf Kesalahan Input !");
+        	erase_valid();
+        break;
+    }
+}
+
+
+void showwahana(int kategori){
+    FILE *view;
+	view = fopen("Data Wahana.txt","r");
+	int test=0;
+	cek.kategori=kategori;
+	//system ("cls");
+	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
+	{
+	    if (tambah.kategori==cek.kategori){
+            printf("\t\t\t-------------------------\n");
+            printf("\n");
+            printf("\t\t\tID Wahana               : %d\n", tambah.id);
+            printf("\t\t\tNama Wahana             : %s\n", tambah.nama);
+            printf("\t\t\tKategori                : %d\n", tambah.kategori);
+            printf("\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
+            printf("\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
+            printf("\t\t\t-------------------------\n");
+            printf("\n");
+            printf("\n");
+            test++;
+	    }
+	}
+	printf ("\n\t\t\tJumlah Wahana : %d",test);
+	fclose(view);
+
+	if(test==0)
+	{
+		system("cls");
+		printf ("\n\t\t\tData Kosong ! \n");
+	}
+        //list_invalid();
 }

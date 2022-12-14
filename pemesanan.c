@@ -3,10 +3,12 @@
 #include <math.h>
 #include <string.h>
 #include <windows.h>
+#include "./admin/crud_wahana.c"
 
 //Variabel global
 int jmlanak, jmldewasa, jmldomestik, jmlinter;
 int tiketjmlanak1, tiketjmlanak2, tiketjmlanak3;
+
 //Cek Bilangan
 float validasiBil(){
     int i = 0;
@@ -16,7 +18,7 @@ float validasiBil(){
     float val;
     int array;
 
-    gets(angka);
+    scanf("%s", &angka);
     array=strlen(angka);
 
     if(angka[0]>=48 && angka[0]<=57){ // PEMBATAS PADA ASCII DIMANA 49-51 BERNILAI "0-9"
@@ -53,6 +55,7 @@ float validasiBil(){
         return val;
     }
 }
+
 int main(){
     pesan1();
 }
@@ -95,7 +98,7 @@ void pesan2(){
     jmldewasa=validasiBil();
     printf("\t\t\t\t-------------------------------------------------\n");
     printf("\n");
-    system("cls");
+   // system("cls");
     pesan3();
 }
 
@@ -114,10 +117,11 @@ void pesan3(){
     printf("\t\t\t\t-------------------------------------------------\n");
     printf("\t\t\t\tMasukkan Pilihan Wahana :");
     pilihan=validasiBil();
+    showwahana(pilihan);
     printf("\n");
     system("cls");
 
-    switch (pilihan){
+    /*switch (pilihan){
 	    case 1:
             anak();
 	    break;
@@ -141,9 +145,12 @@ void pesan3(){
             system("cls");
             pesan3();
 	 }
+	 */
 }
 
-void anak(){
+
+
+/*void anak(){
     int pilihan;
 
     printf("\t\t\t\t+--------------------------------------------------------------------------------------------------------+\n");
@@ -196,8 +203,8 @@ void anak(){
 
              konfiranak();
 }
-
-void konfiranak(){
+*/
+/*void konfiranak(){
      int pilihan ;
 
      printf("\n");
@@ -241,3 +248,4 @@ void konfiranak(){
              konfiranak();
 	  }
 }
+*/
