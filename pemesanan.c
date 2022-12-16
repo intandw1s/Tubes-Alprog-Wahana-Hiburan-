@@ -107,7 +107,7 @@ void pesan3(){
     printf("\t\t\t\t+-------------------------------------------------+\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t|                  LalaFund Land                  |\n");
-    printf("\t\t\t\t|               PEMESANAN BAGIAN TIGA              |\n");
+    printf("\t\t\t\t|               PEMESANAN BAGIAN TIGA             |\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t+-------------------------------------------------+\n");
     printf("\t\t\t\tPilihan Wahana :\n\n");
@@ -119,7 +119,7 @@ void pesan3(){
     pilihan=validasiBil();
     showwahana(pilihan);
     printf("\n");
-    system("cls");
+    //system("cls");
 
     /*switch (pilihan){
 	    case 1:

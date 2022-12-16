@@ -138,7 +138,7 @@ void wahanaAdmin(){
             editdata();
 	    break;
 	    case 3:
-            showwahana(kategori);
+            lihatdata();
         break;
         case 4:
             hapusdata();
@@ -336,10 +336,10 @@ void lihatdata(){
 	system ("cls");
 	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 	{
-        printf("\t\t\t-------------------------\n");
+        printf("\t\t\t\-------------------------\n");
         printf("\n");
         printf("\t\t\tID Wahana               : %d\n", tambah.id);
-        printf("\t\t\tNama Wahana             : %s\n", tambah.nama);
+        printf("\t\t\t\Nama Wahana             : %s\n", tambah.nama);
         printf("\t\t\tKategori                : %d\n", tambah.kategori);
         printf("\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
         printf("\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
@@ -349,7 +349,7 @@ void lihatdata(){
             test++;
 
 	}
-	printf ("\n\t\t\tJumlah Wahana : %d",test);
+	printf ("\n\t\t\t\t\tJumlah Wahana : %d",test);
 	fclose(view);
 
 	if(test==0)
@@ -469,33 +469,33 @@ void erase_valid(){
 
 void showwahana(int kategori){
     FILE *view;
-	view = fopen("Data Wahana.txt","r");
+    view = fopen("./admin/Data Wahana.txt","r");
 	int test=0;
 	cek.kategori=kategori;
 	//system ("cls");
 	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 	{
 	    if (tambah.kategori==cek.kategori){
-            printf("\t\t\t-------------------------\n");
+            printf("\t\t\t\t-------------------------\n");
             printf("\n");
-            printf("\t\t\tID Wahana               : %d\n", tambah.id);
-            printf("\t\t\tNama Wahana             : %s\n", tambah.nama);
-            printf("\t\t\tKategori                : %d\n", tambah.kategori);
-            printf("\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
-            printf("\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
-            printf("\t\t\t-------------------------\n");
+            printf("\t\t\t\tID Wahana               : %d\n", tambah.id);
+            printf("\t\t\t\tNama Wahana             : %s\n", tambah.nama);
+            printf("\t\t\t\tKategori                : %d\n", tambah.kategori);
+            printf("\t\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
+            printf("\t\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
+            printf("\t\t\t\t-------------------------\n");
             printf("\n");
             printf("\n");
             test++;
 	    }
 	}
-	printf ("\n\t\t\tJumlah Wahana : %d",test);
+	printf ("\n\t\t\t\tJumlah Wahana : %d",test);
 	fclose(view);
 
 	if(test==0)
 	{
 		system("cls");
-		printf ("\n\t\t\tData Kosong ! \n");
+		printf ("\n\t\t\t\tData Kosong ! \n");
 	}
         //list_invalid();
 }
