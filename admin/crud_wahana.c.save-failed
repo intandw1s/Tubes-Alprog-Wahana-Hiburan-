@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "../menu_utama.c"
+#include "./menu_utama.c"
 
 //struct
 struct tb_wahana {
@@ -416,7 +416,7 @@ void list_invalid1(){
     pilihan=validasiBil1();
     switch(pilihan){
     	case 1:
-    	    listmenu();
+    	    menu();
         break;
         case 0:
             close();

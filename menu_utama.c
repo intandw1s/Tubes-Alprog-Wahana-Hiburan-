@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include "admin/crud_wahana.c"
 
 int validasimenu() {
     int i = 0;
@@ -102,6 +103,7 @@ void menu(){
     printf("\t\t\t\t 2.Pemesanan\n");
     printf("\t\t\t\t 3.Riwayat Pemesanan\n");
     printf("\t\t\t\t 4.Intruksi\n");
+    printf("\t\t\t\t 5.Keluar\n");
     printf("\t\t\t\t+-------------------------------------------------+\n");
     printf("\n\t\t\t\tMasukkan Menu Pilihan Anda(1/2/3/4) : ");
     pilihan = validasimenu();
@@ -111,7 +113,7 @@ void menu(){
     switch (pilihan){
 	    case 1:
             printf("MENU 1");
-            //info();
+            datalihat();
 	    break;
         case 2:
             printf("MENU 2");
@@ -123,6 +125,9 @@ void menu(){
 	    break;
 	    case 4:
             intruksi();
+        break;
+        case 5:
+            exit(0);
         break;
 	    default:
             printf("\t\t\t\t||=================================================||\n");

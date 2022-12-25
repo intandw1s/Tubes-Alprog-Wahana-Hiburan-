@@ -12,7 +12,7 @@ float validasiBil(){
     float val;
     int array;
 
-    gets(angka);
+    scanf("%s", &angka);
     array=strlen(angka);
 
     if(angka[0]>=48 && angka[0]<=57){ // PEMBATAS PADA ASCII DIMANA 49-51 BERNILAI "0-9"
