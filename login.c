@@ -11,9 +11,9 @@ void masuk(){
 	char password [20];
 
     printf("\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\t|            Om swastyastu! Hi! Ni Hao!           |\n");
-    printf("\t\t\t\t|              ^0^SELAMAT DATANG ^v^              |\n");
-    printf("\t\t\t\t|                 LalaFund Land                   |\n");
+    printf("\t\t\t\t|            Om Swastyastu! Hi! Ni Hao!           |\n");
+    printf("\t\t\t\t|              ^0^ SELAMAT DATANG ^v^             |\n");
+    printf("\t\t\t\t|                  LalaFund Land                  |\n");
     printf("\t\t\t\t|=================================================|\n");
     printf("\t\t\t\t|          SILAHKAN LOGIN TERLEBIH DAHULU         | \n");
     printf("\t\t\t\t+-------------------------------------------------+\n");
@@ -32,7 +32,7 @@ void masuk(){
 
 	} else {
         getchar();
-		printf("\t\t\t\t MAAF USERNAME ATAU PASSWORD ANDA SALAH ^.^\n");
+		printf("\t\t\t\t MAAF USERNAME ATAU PASSWORD ANDA SALAH :( \n");
         printf("\t\t\t\t Tekan enter untuk mencoba kembali");
         printf("\t\t\t\t---------------------------------------------------\n");
         getchar();
