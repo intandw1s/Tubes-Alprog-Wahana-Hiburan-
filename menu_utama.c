@@ -63,24 +63,24 @@ int validasimenu() {
 
 //INTRUKSI
 void intruksi(){
-    printf("\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\t|            Om swastyastu! Hi! Ni Hao!           |\n");
-    printf("\t\t\t\t|              ^0^SELAMAT DATANG ^v^              |\n");
-    printf("\t\t\t\t|.................................................|\n");
-    printf("\t\t\t\t|=========== Welcome to LalaFund Land ============|\n");
-    printf("\t\t\t\t|.................................................|\n");
-    printf("\t\t\t\t|--------------------INTRUKSI---------------------|\n");
-    printf("\t\t\t\t+=================================================+\n\n");
+    printf("\t\t\t\t+===========================================================================+\n");
+    printf("\t\t\t\t|           	         Om swastyastu! Hi! Ni Hao!                     |\n");
+    printf("\t\t\t\t|              		   ^0^ SELAMAT DATANG ^v^                       |\n");
+    printf("\t\t\t\t|...........................................................................|\n");
+    printf("\t\t\t\t|============================ Welcome to LalaFund Land =====================|\n");
+    printf("\t\t\t\t|...........................................................................|\n");
+    printf("\t\t\t\t|-------------------------------------INTRUKSI------------------------------|\n");
+    printf("\t\t\t\t+===========================================================================+\n\n");
     printf("\t\t--------- Mohon Perhatikan Instruksi Berikut Sebelum Melayani Pemesanan ---------\n");
-    printf("\t\t1. Silahkan lihat informasi wahana untuk melihat lebih lengkap! \n");
+    printf("\t\t1. Silahkan lihat informasi wahana untuk melihat info selengkapnya ! \n");
     printf("\t\t2. Masukkan golongan customer \n");
     printf("\t\t3. Selanjutnya, inputkan golongan tiket customer\n");
     printf("\t\t4. Hingga tampil menu wahana pilihan, anda dapat menginputkan pesanan customer \n");
     printf("\t\t  (Pastikan inputan anda telah benar)\n");
     printf("\t\t5. Kemudian inputkan data sesuai intruksi!\n\n");
-    printf("\t\t\t\t=================================================\n");
-    printf("\t\t\t\t                Semanagat Hari Ini^.^             \n");
-    printf("\t\t\t\t=================================================\n");
+    printf("\t\t\t\t=============================================================================\n");
+    printf("\t\t\t\t                                Semanagat Hari Ini ^.^                       \n");
+    printf("\t\t\t\t=============================================================================\n");
     printf("\n\t\t\t\t Tekan apapun untuk ke menu selanjutnya! : ");
     getch();
     system("cls");
