@@ -1,0 +1,2 @@
+id, id pemesanan, id wahana, jumlah anak, jumlah dewasa, jumlah domestik, jumlah internasional, subtotal harga
+1;1;11;7;0;7;0;350000

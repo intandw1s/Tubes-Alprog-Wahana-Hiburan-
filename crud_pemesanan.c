@@ -3,15 +3,44 @@
 #include <math.h>
 #include <string.h>
 
+//variabel global
+int psn_id;
+
+//harga wahana 1
+int harga_anak [3][2]=  {{50000,80000},
+                        {80000,100000},
+                        {75000,110000}};
+
+int harga_dewasa [3][4]=  {{100000,150000},
+                          {125000,175000},
+                          {50000,85000},
+                          {45000,75000},
+                          {110000,145000},
+                          {150000},{250000},
+                          {80000, 120000}};
+
+int harga_keluarga [3][2]={{35000,65000},
+                          {50000,80000},
+                          {55000,85000}};
 
 //struct
-struct tb_wahana {
+struct tb_pemesanan {
 	int id;
 	char nama[30];
-	int kategori;
-	int prc_dom;
-	int prc_inter;
-}tambah,cek,hapus,sort[100],temp;
+
+}tambah_psn,cek_psn,hapus_psn,sort_psn[100],temp_psn;
+
+struct dt_pemesanan {
+	int id;
+	int id_pemesanan;
+	int id_wahana;
+	int subtotal_anak;
+	int subtotal_dws;
+	int subtotal_domestik;
+	int subtotal_inter;
+	int subtotal_harga;
+
+}tambah_dtpsn,cek_dtpsn,hapus_dtpsn,sort_dtpsn[100],temp_dtpsn;
 
 
 //Cek Bilangan
@@ -107,24 +136,25 @@ float validasiBil1(){
     }
 }
 
-/*int main(){
-    wahanaAdmin();
-}*/
-void wahanaAdmin(){
+int main(){
+    pesanan();
+}
+void pesanan(){
     int pilihan;
     printf("\t\t\t\t+-------------------------------------------------+\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t|                  LalaFund  Land                 |\n");
-    printf("\t\t\t\t|                   Tabel Wahana                  |\n");
+    printf("\t\t\t\t|                     Pemesanan                   |\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\tPilihan Tabel Wahana :\n\n");
-    printf("\n\t\t\t\t[1]. Tambah Data Wahana");
-    printf("\n\t\t\t\t[2]. Edit Data Wahana");
-    printf("\n\t\t\t\t[3]. Lihat Data Wahana");
-    printf("\n\t\t\t\t[4]. Hapus Data Wahana");
-    printf("\n\t\t\t\t[5]. Kembali");
-    printf("\n\t\t\t\t[6]. Keluar");
+    printf("\t\t\t\tPilihan Tabel Pemesanan :\n\n");
+    printf("\n\t\t\t\t[1]. Tambah Data Pemesanan");
+    printf("\n\t\t\t\t[2]. Tambah Detail Pemesanan");
+    printf("\n\t\t\t\t[3]. Edit Data Pemesanan");
+    printf("\n\t\t\t\t[4]. Lihat Data Pemesanan");
+    printf("\n\t\t\t\t[5]. Hapus Data Pemesanan");
+    printf("\n\t\t\t\t[6]. Kembali");
+    printf("\n\t\t\t\t[7]. Keluar");
     printf("\n\t\t\t\t-------------------------------------------------\n");
     printf("\t\t\t\tMasukkan Pilihan Anda :");
     pilihan=validasiBil1();
@@ -133,19 +163,19 @@ void wahanaAdmin(){
 
     switch (pilihan){
 	    case 1:
-            tambahdata();
+            tambahdata_psn();
 	    break;
         case 2:
-            editdata();
+            dtpsn_tambah();
 	    break;
 	    case 3:
-            lihatdata();
+            //lihatdata();
         break;
         case 4:
-            hapusdata();
+            //hapusdata();
         break;
         case 5:
-            exit(1);
+            //exit(1);
         break;
 	    default:
             printf("\t\t\t\t||=================================================||\n");
@@ -162,42 +192,41 @@ void wahanaAdmin(){
 	 }
 }
 
-void tambahdata(){
+void tambahdata_psn(){
     FILE *ptr,*ptr1;
 	int count=0;
 
-	ptr =fopen("Data Wahana.txt","a");
+	ptr =fopen("Data Pemesanan.txt","a");
 		system("cls");
-		ptr1 =fopen("Data Wahana.txt","r");
-		tambah.id=1;
-		while (fscanf (ptr1,"%d;%[^;];%d;%d;%d;\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
+		ptr1 =fopen("Data Pemesanan.txt","r");
+		tambah_psn.id=1;
+		while (fscanf (ptr1,"%d;%[^;]\n",&tambah_psn.id,tambah_psn.nama)!=EOF)
 		{
-			tambah.id++;
+			tambah_psn.id++;
 		}
-		cek.id = tambah.id;
+		cek_psn.id = tambah_psn.id;
 		fclose(ptr1);
-		printf ("masukan nama wahana : ");fflush(stdin);
-        scanf ("%[^\n]",tambah.nama);
-		printf ("masukan kategori wahana : ");fflush(stdin);
-		tambah.kategori=validasiBil1();
-		printf ("masukan harga domestik : ");fflush(stdin);
-		tambah.prc_dom=validasiBil1();
-		printf ("masukan harga internasional : ");fflush(stdin);
-		tambah.prc_inter=validasiBil1();
-		fprintf(ptr,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
+		printf ("Masukan Nama Pelanggan : ");fflush(stdin);
+        scanf ("%[^\n]",tambah_psn.nama);
+
+		fprintf(ptr,"id, nama pelanggan\n");
+		fprintf(ptr,"%d;%s;\n",tambah_psn.id,tambah_psn.nama);
+		psn_id=tambah_psn.id;
 		fclose(ptr);
 
-		printf("\n\nData Wahana Sudah Disimpan !");
+		printf("\n\nData Pemesanan Sudah Disimpan !");
 		add_invalid();
+
 }
+
 
 void add_invalid(){
     int pilihan;
-    printf("\n\n\tEnter 1 untuk menu utama dan 0 untuk keluar : ");
+    printf("\n\n\tEnter 1 untuk menu selanjutnya dan 0 untuk keluar : ");
     pilihan=validasiBil1();
     switch(pilihan){
         case 1:
-            wahanaAdmin();
+            dtpsn_tambah();
         break;
         case 0:
             exit(1);
@@ -210,7 +239,136 @@ void add_invalid(){
     }
 }
 
-void editdata(){
+void dtpsn_tambah(){
+    FILE *ptr,*ptr1;
+	int count=0;
+    int subtotal;
+	ptr =fopen("Data Detail Pemesanan.txt","a");
+		system("cls");
+		ptr1 =fopen("Data Detail Pemesanan.txt","r");
+		tambah_dtpsn.id=1;
+		while (fscanf (ptr1,"%d;%d;%d;%d;%d;%d;%d;%d\n",&tambah_dtpsn.id,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.id_wahana,&tambah_dtpsn.subtotal_anak,&tambah_dtpsn.subtotal_dws,&tambah_dtpsn.subtotal_domestik,&tambah_dtpsn.subtotal_inter,&subtotal)!=EOF)
+		{
+			tambah_dtpsn.id++;
+		}
+		cek_dtpsn.id = tambah_dtpsn.id;
+		fclose(ptr1);
+		printf ("masukan id wahana : ");fflush(stdin);
+		tambah_dtpsn.id_wahana=validasiBil1();
+		printf ("masukan jumlah anak : ");fflush(stdin);
+		tambah_dtpsn.subtotal_anak=validasiBil1();
+		printf ("masukan jumlah dewasa  : ");fflush(stdin);
+		tambah_dtpsn.subtotal_dws=validasiBil1();
+		printf ("masukan jumlah domestik : ");fflush(stdin);
+        tambah_dtpsn.subtotal_domestik=validasiBil1();
+		printf ("masukan jumlah internasional : ");fflush(stdin);
+		tambah_dtpsn.subtotal_inter=validasiBil1();
+		subtotal= calstotal(tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter);
+
+		fprintf(ptr,"id, id pemesanan, id wahana, jumlah anak, jumlah dewasa, jumlah domestik, jumlah internasional, subtotal harga\n");
+		fprintf(ptr,"%d;%d;%d;%d;%d;%d;%d;%d\n",tambah_dtpsn.id,psn_id,tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_anak,tambah_dtpsn.subtotal_dws,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter,subtotal);
+		fclose(ptr);
+
+		printf("\n\nData Pemesanan Sudah Disimpan !");
+		add_invalid2();
+}
+
+void dtpsn_tambah1(){
+    system("cls");
+    FILE *ptr,*ptr1;
+	int count=0;
+    int subtotal;
+	ptr =fopen("Data Detail Pemesanan.txt","a");
+		system("cls");
+		ptr1 =fopen("Data Detail Pemesanan.txt","r");
+		tambah_dtpsn.id=1;
+		while (fscanf (ptr1,"%d;%d;%d;%d;%d;%d;%d;%d\n",&tambah_dtpsn.id,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.id_wahana,&tambah_dtpsn.subtotal_anak,&tambah_dtpsn.subtotal_dws,&tambah_dtpsn.subtotal_domestik,&tambah_dtpsn.subtotal_inter,&subtotal)!=EOF)
+		{
+			tambah_dtpsn.id++;
+		}
+		cek_dtpsn.id = tambah_dtpsn.id;
+		fclose(ptr1);
+		printf ("masukan id wahana : ");fflush(stdin);
+		tambah_dtpsn.id_wahana=validasiBil1();
+		printf ("masukan jumlah anak : ");fflush(stdin);
+		tambah_dtpsn.subtotal_anak=validasiBil1();
+		printf ("masukan jumlah dewasa  : ");fflush(stdin);
+		tambah_dtpsn.subtotal_dws=validasiBil1();
+		printf ("masukan jumlah domestik : ");fflush(stdin);
+        tambah_dtpsn.subtotal_domestik=validasiBil1();
+		printf ("masukan jumlah internasional : ");fflush(stdin);
+		tambah_dtpsn.subtotal_inter=validasiBil1();
+		subtotal= calstotal(tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter);
+
+		fprintf(ptr,"id, id pemesanan, id wahana, jumlah anak, jumlah dewasa, jumlah domestik, jumlah internasional, subtotal harga\n");
+		fprintf(ptr,"%d;%d;%d;%d;%d;%d;%d;%d\n",tambah_dtpsn.id,psn_id,tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_anak,tambah_dtpsn.subtotal_dws,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter,subtotal);
+		fclose(ptr);
+
+		printf("\n\nData Pemesanan Sudah Disimpan !");
+		add_invalid2();
+}
+
+
+int calstotal(id_wahana,subtotal_domestik,subtotal_inter){
+    int total;
+    if(id_wahana==11){
+        total=((subtotal_domestik*harga_anak[0][0])+(subtotal_inter*harga_anak[0][1]));
+    }else if (id_wahana==12){
+        total=((subtotal_domestik*harga_anak[1][0])+(subtotal_inter*harga_anak[1][1]));
+    }else if (id_wahana==21){
+        total=((subtotal_domestik*harga_dewasa[0][0])+(subtotal_inter*harga_dewasa[0][1]));
+    }else if (id_wahana==22){
+        total=((subtotal_domestik*harga_dewasa[1][0])+(subtotal_inter*harga_dewasa[1][1]));
+    }else if (id_wahana==23){
+        total=((subtotal_domestik*harga_dewasa[2][0])+(subtotal_inter*harga_dewasa[2][1]));
+    }else if (id_wahana==24){
+        total=((subtotal_domestik*harga_dewasa[3][0])+(subtotal_inter*harga_dewasa[3][1]));
+    }else if (id_wahana==25){
+        total=((subtotal_domestik*harga_dewasa[4][0])+(subtotal_inter*harga_dewasa[4][1]));
+    }else if (id_wahana==26){
+        total=((subtotal_domestik*harga_dewasa[5][0])+(subtotal_inter*harga_dewasa[5][1]));
+    }else if (id_wahana==27){
+        total=((subtotal_domestik*harga_dewasa[6][0])+(subtotal_inter*harga_dewasa[6][1]));
+    }else if (id_wahana==31){
+        total=((subtotal_domestik*harga_dewasa[0][0])+(subtotal_inter*harga_dewasa[0][1]));
+    }else if (id_wahana==32){
+        total=((subtotal_domestik*harga_dewasa[1][0])+(subtotal_inter*harga_dewasa[1][1]));
+    }else if (id_wahana==33){
+        total=((subtotal_domestik*harga_dewasa[2][0])+(subtotal_inter*harga_dewasa[2][1]));
+    }else {
+        total=0;
+    }
+    return total;
+}
+
+void add_invalid2(){
+    int pilihan;
+    printf("\n\n\tEnter 1 untuk menu utama , 2 untuk menambahkan data lagi, 3 untuk membuat pesanan baru dan 0 untuk keluar : ");
+    pilihan=validasiBil1();
+    switch(pilihan){
+        case 1:
+            pesanan();
+        break;
+        case 2:
+            pesanan();
+        break;
+        case 3:
+            tambahdata_psn();
+        break;
+        case 0:
+            exit(1);
+        break;
+        default:
+            printf("\nMaaf Kesalahan Input !");
+            add_invalid2();
+        break;
+
+    }
+}
+
+
+
+/*void editdata(){
     int pilih,test=0;
 	FILE *lama,*baru;
 	lama = fopen("Data Wahana.txt","r");
@@ -219,7 +377,7 @@ void editdata(){
 
 	printf ("Masukan ID Wahana : ");
 	cek.id=validasiBil1();
-	while(fscanf (lama,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
+	while(fscanf (lama,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.jml_domestik,&tambah.jml_domestik,&tambah.prc_inter)!=EOF)
 	{
 		if(tambah.id == cek.id)
 		{
@@ -361,36 +519,6 @@ void lihatdata(){
         list_invalid();
 }
 
-void datalihat(){
-    FILE *view;
-	view = fopen("admin/Data Wahana.txt","r");
-	int test=0;
-	system ("cls");
-	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
-	{
-        printf("\t\t\t\-------------------------\n");
-        printf("\n");
-        printf("\t\t\tID Wahana               : %d\n", tambah.id);
-        printf("\t\t\t\Nama Wahana            : %s\n", tambah.nama);
-        printf("\t\t\tKategori                : %d\n", tambah.kategori);
-        printf("\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
-        printf("\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
-        printf("\t\t\t-------------------------\n");
-        printf("\n");
-        printf("\n");
-            test++;
-
-	}
-	printf ("\n\t\t\t\t\tJumlah Wahana : %d",test);
-	fclose(view);
-
-	if(test==0)
-	{
-		system("cls");
-		printf ("\n\t\t\tData Kosong ! \n");
-	}
-        list_invalid1();
-}
 
 void list_invalid(){
     int pilihan;
@@ -410,23 +538,7 @@ void list_invalid(){
     }
 }
 
-void list_invalid1(){
-    int pilihan;
-    printf("\n\nEnter 1 untuk menu utama dan 0 untuk keluar : ");
-    pilihan=validasiBil1();
-    switch(pilihan){
-    	case 1:
-    	    listmenu();
-        break;
-        case 0:
-            close();
-        break;
-        default:
-            printf("\nMaaf Kesalahan Input !");
-        	list_invalid1();
-        break;
-    }
-}
+
 /*void edit_valid(){
     int pilihan;
     printf("\n\n\nInput 1 untuk ke menu utama dan 0 untuk keluar :");
@@ -445,7 +557,7 @@ void list_invalid1(){
     }
 }*/
 
-void hapusdata(){
+/*void hapusdata(){
     FILE *lama, *baru;
 	int test=0;
 	lama = fopen("Data Wahana.txt","r");
@@ -549,3 +661,4 @@ void showwahana(int kategori){
 	}
         //list_invalid();
 }
+*/

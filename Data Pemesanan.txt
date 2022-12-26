@@ -1,0 +1,2 @@
+id, nama pelanggan
+1;Kukis;
