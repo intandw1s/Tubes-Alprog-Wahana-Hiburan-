@@ -1,8 +1,8 @@
 #include <stdio.h>
-//#include <stdlib.h>
-//#include <math.h>
-//#include <string.h>
-#include "../menu_utama.c"
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+//#include "../menu_utama.c"
 
 //struct
 struct tb_wahana {
@@ -107,9 +107,9 @@ float validasiBil1(){
     }
 }
 
-/*int main(){
+int main(){
     wahanaAdmin();
-}*/
+}
 void wahanaAdmin(){
     int pilihan;
     printf("\t\t\t\t+-------------------------------------------------+\n");
@@ -172,10 +172,12 @@ void tambahdata(){
 		tambah.id=1;
 		while (fscanf (ptr1,"%d;%[^;];%d;%d;%d;\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 		{
-			tambah.id++;
+		//	tambah.id++;
 		}
-		cek.id = tambah.id;
+		//cek.id = tambah.id;
 		fclose(ptr1);
+		printf ("masukan id wahana : ");fflush(stdin);
+        tambah.id=validasiBil1();
 		printf ("masukan nama wahana : ");fflush(stdin);
         scanf ("%[^\n]",tambah.nama);
 		printf ("masukan kategori wahana : ");fflush(stdin);
@@ -371,7 +373,7 @@ void datalihat(){
         printf("\t\t\t\-------------------------\n");
         printf("\n");
         printf("\t\t\tID Wahana               : %d\n", tambah.id);
-        printf("\t\t\t\Nama Wahana            : %s\n", tambah.nama);
+        printf("\t\t\tNama Wahana             : %s\n", tambah.nama);
         printf("\t\t\tKategori                : %d\n", tambah.kategori);
         printf("\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
         printf("\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
@@ -416,7 +418,7 @@ void list_invalid1(){
     pilihan=validasiBil1();
     switch(pilihan){
     	case 1:
-    	    listmenu();
+    	    wahanaAdmin();
         break;
         case 0:
             close();

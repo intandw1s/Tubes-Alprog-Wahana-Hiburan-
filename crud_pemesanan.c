@@ -3,15 +3,52 @@
 #include <math.h>
 #include <string.h>
 
+const char* nm_wahana(int id_wahana){
+    char *wahana_name;
+    int total;
+    if(id_wahana==11){
+        wahana_name="Waterpark";
+    }/*else if (id_wahana==12){
+        total=((subtotal_anak_dom*harga_anak[1][0])+(subtotal_anak_inter*harga_anak[1][1]));
+    }else if (id_wahana==13){
+        total=((subtotal_anak_dom*harga_anak[2][0])+(subtotal_anak_inter*harga_anak[2][1]));
+    }else if (id_wahana==21){
+        total=((subtotal_dws_dom*harga_dewasa[0][0])+(subtotal_dws_inter*harga_dewasa[0][1]));
+    }else if (id_wahana==22){
+        total=((subtotal_dws_dom*harga_dewasa[1][0])+(subtotal_dws_inter*harga_dewasa[1][1]));
+    }else if (id_wahana==23){
+        total=((subtotal_dws_dom*harga_dewasa[2][0])+(subtotal_dws_inter*harga_dewasa[2][1]));
+    }else if (id_wahana==24){
+        total=((subtotal_dws_dom*harga_dewasa[3][0])+(subtotal_dws_inter*harga_dewasa[3][1]));
+    }else if (id_wahana==25){
+        total=((subtotal_dws_dom*harga_dewasa[4][0])+(subtotal_dws_inter*harga_dewasa[4][1]));
+    }else if (id_wahana==26){
+        total=((subtotal_dws_dom*harga_dewasa[5][0])+(subtotal_dws_inter*harga_dewasa[5][1]));
+    }else if (id_wahana==27){
+        total=((subtotal_dws_dom*harga_dewasa[6][0])+(subtotal_dws_inter*harga_dewasa[6][1]));
+    }else if (id_wahana==31){
+        total=((subtotal_anak_dom*harga_keluarga[0][0])+(subtotal_anak_inter*harga_keluarga[0][1])+(subtotal_dws_dom*harga_keluarga[0][0])+(subtotal_dws_inter*harga_keluarga[0][1]));
+    }else if (id_wahana==32){
+        total=((subtotal_anak_dom*harga_keluarga[1][0])+(subtotal_anak_inter*harga_keluarga[1][1])+(subtotal_dws_dom*harga_keluarga[1][0])+(subtotal_dws_inter*harga_keluarga[1][1]));
+    }else if (id_wahana==33){
+        total=((subtotal_anak_dom*harga_keluarga[2][0])+(subtotal_anak_inter*harga_keluarga[2][1])+(subtotal_dws_dom*harga_keluarga[2][0])+(subtotal_dws_inter*harga_keluarga[2][1]));
+    }else {
+        total=0;
+    }*/
+    return wahana_name;
+
+}
+
 //variabel global
 int psn_id;
+//const char* nm_wahana(char*id_wahana);
 
 //harga wahana 1
 int harga_anak [3][2]=  {{50000,80000},
                         {80000,100000},
                         {75000,110000}};
 
-int harga_dewasa [3][4]=  {{100000,150000},
+int harga_dewasa [7][2]=  {{100000,150000},
                           {125000,175000},
                           {50000,85000},
                           {45000,75000},
@@ -23,21 +60,26 @@ int harga_keluarga [3][2]={{35000,65000},
                           {50000,80000},
                           {55000,85000}};
 
+
+//wahana
+//char wahana_anak[][]= {{Waterpark},{Outbound Games},{LalaFund Park}};
+
 //struct
 struct tb_pemesanan {
-	int id;
-	char nama[30];
+	int id_psn;
+	char nama_psn[30];
 
 }tambah_psn,cek_psn,hapus_psn,sort_psn[100],temp_psn;
 
 struct dt_pemesanan {
-	int id;
-	int id_pemesanan;
+	int id_det_psn;
+	//int id_pemesanan;
 	int id_wahana;
-	int subtotal_anak;
-	int subtotal_dws;
-	int subtotal_domestik;
-	int subtotal_inter;
+	char nama_whn[100];
+	int subtotal_anak_dom;
+    int subtotal_anak_inter;
+	int subtotal_dws_dom;
+    int subtotal_dws_inter;
 	int subtotal_harga;
 
 }tambah_dtpsn,cek_dtpsn,hapus_dtpsn,sort_dtpsn[100],temp_dtpsn;
@@ -149,12 +191,11 @@ void pesanan(){
     printf("\t\t\t\t+-------------------------------------------------+\n");
     printf("\t\t\t\tPilihan Tabel Pemesanan :\n\n");
     printf("\n\t\t\t\t[1]. Tambah Data Pemesanan");
-    printf("\n\t\t\t\t[2]. Tambah Detail Pemesanan");
-    printf("\n\t\t\t\t[3]. Edit Data Pemesanan");
-    printf("\n\t\t\t\t[4]. Lihat Data Pemesanan");
-    printf("\n\t\t\t\t[5]. Hapus Data Pemesanan");
-    printf("\n\t\t\t\t[6]. Kembali");
-    printf("\n\t\t\t\t[7]. Keluar");
+    printf("\n\t\t\t\t[2]. Edit Data Pemesanan");
+    printf("\n\t\t\t\t[3]. Lihat Data Pemesanan");
+    printf("\n\t\t\t\t[4]. Hapus Data Pemesanan");
+    printf("\n\t\t\t\t[5]. Kembali");
+    printf("\n\t\t\t\t[6]. Keluar");
     printf("\n\t\t\t\t-------------------------------------------------\n");
     printf("\t\t\t\tMasukkan Pilihan Anda :");
     pilihan=validasiBil1();
@@ -166,7 +207,7 @@ void pesanan(){
             tambahdata_psn();
 	    break;
         case 2:
-            dtpsn_tambah();
+           // dtpsn_tambah1();
 	    break;
 	    case 3:
             //lihatdata();
@@ -199,37 +240,32 @@ void tambahdata_psn(){
 	ptr =fopen("Data Pemesanan.txt","a");
 		system("cls");
 		ptr1 =fopen("Data Pemesanan.txt","r");
-		tambah_psn.id=1;
-		while (fscanf (ptr1,"%d;%[^;]\n",&tambah_psn.id,tambah_psn.nama)!=EOF)
+		tambah_psn.id_psn=1;
+		while (fscanf (ptr1,"%d;%[^;];\n",&tambah_psn.id_psn,tambah_psn.nama_psn)!=EOF)
 		{
-			tambah_psn.id++;
+			tambah_psn.id_psn++;
 		}
-		cek_psn.id = tambah_psn.id;
+		cek_psn.id_psn = tambah_psn.id_psn;
 		fclose(ptr1);
-		printf ("Masukan Nama Pelanggan : ");fflush(stdin);
-        scanf ("%[^\n]",tambah_psn.nama);
+		printf ("masukan nama pelanggan : ");fflush(stdin);
+        scanf ("%[^\n]",tambah_psn.nama_psn);
 
-		fprintf(ptr,"id, nama pelanggan\n");
-		fprintf(ptr,"%d;%s;\n",tambah_psn.id,tambah_psn.nama);
-		psn_id=tambah_psn.id;
+		fprintf(ptr,"%d;%s;\n",tambah_psn.id_psn,tambah_psn.nama_psn);
+		psn_id=tambah_psn.id_psn;
 		fclose(ptr);
 
 		printf("\n\nData Pemesanan Sudah Disimpan !");
 		add_invalid();
-
 }
 
 
 void add_invalid(){
     int pilihan;
-    printf("\n\n\tEnter 1 untuk menu selanjutnya dan 0 untuk keluar : ");
+    printf("\n\n\tEnter 1 untuk ke menu selanjutnya : ");
     pilihan=validasiBil1();
     switch(pilihan){
         case 1:
             dtpsn_tambah();
-        break;
-        case 0:
-            exit(1);
         break;
         default:
             printf("\nMaaf Kesalahan Input !");
@@ -243,103 +279,78 @@ void dtpsn_tambah(){
     FILE *ptr,*ptr1;
 	int count=0;
     int subtotal;
+    char *wahana_id;
+    tambah_dtpsn.id_det_psn=1;
 	ptr =fopen("Data Detail Pemesanan.txt","a");
 		system("cls");
 		ptr1 =fopen("Data Detail Pemesanan.txt","r");
-		tambah_dtpsn.id=1;
-		while (fscanf (ptr1,"%d;%d;%d;%d;%d;%d;%d;%d\n",&tambah_dtpsn.id,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.id_wahana,&tambah_dtpsn.subtotal_anak,&tambah_dtpsn.subtotal_dws,&tambah_dtpsn.subtotal_domestik,&tambah_dtpsn.subtotal_inter,&subtotal)!=EOF)
+		while (fscanf(ptr1,"%d;%d;%d;%[^\n];%d;%d;%d;%d;%d\n",&tambah_dtpsn.id_det_psn,&psn_id,&tambah_dtpsn.id_wahana,wahana_id,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&subtotal)!=EOF)
 		{
-			tambah_dtpsn.id++;
+			tambah_dtpsn.id_det_psn++;
 		}
-		cek_dtpsn.id = tambah_dtpsn.id;
+		cek_dtpsn.id_det_psn = tambah_dtpsn.id_det_psn;
 		fclose(ptr1);
-		printf ("masukan id wahana : ");fflush(stdin);
-		tambah_dtpsn.id_wahana=validasiBil1();
-		printf ("masukan jumlah anak : ");fflush(stdin);
-		tambah_dtpsn.subtotal_anak=validasiBil1();
-		printf ("masukan jumlah dewasa  : ");fflush(stdin);
-		tambah_dtpsn.subtotal_dws=validasiBil1();
-		printf ("masukan jumlah domestik : ");fflush(stdin);
-        tambah_dtpsn.subtotal_domestik=validasiBil1();
-		printf ("masukan jumlah internasional : ");fflush(stdin);
-		tambah_dtpsn.subtotal_inter=validasiBil1();
-		subtotal= calstotal(tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter);
-
-		fprintf(ptr,"id, id pemesanan, id wahana, jumlah anak, jumlah dewasa, jumlah domestik, jumlah internasional, subtotal harga\n");
-		fprintf(ptr,"%d;%d;%d;%d;%d;%d;%d;%d\n",tambah_dtpsn.id,psn_id,tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_anak,tambah_dtpsn.subtotal_dws,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter,subtotal);
+		printf ("masukan id wahana : ");
+		fflush(stdin);
+        //scanf ("%[^\n]",tambah_dtpsn.id_wahana);
+        tambah_dtpsn.id_wahana=validasiBil1();
+		printf ("masukan jumlah anak domestik : ");
+		fflush(stdin);
+		tambah_dtpsn.subtotal_anak_dom=validasiBil1();
+		printf ("masukan jumlah anak internasional: ");
+		fflush(stdin);
+		tambah_dtpsn.subtotal_anak_inter=validasiBil1();
+		printf ("masukan jumlah dewasa domestik : ");
+		fflush(stdin);
+		tambah_dtpsn.subtotal_dws_dom=validasiBil1();
+		printf ("masukan jumlah dewasa internasional : ");
+		fflush(stdin);
+		tambah_dtpsn.subtotal_dws_inter=validasiBil1();
+		subtotal= calstotal(tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
+		wahana_id=nm_wahana(tambah_dtpsn.id_wahana);
+		fprintf(ptr,"%d;%d;%d;%s;%d;%d;%d;%d;%d\n",tambah_dtpsn.id_det_psn,psn_id,tambah_dtpsn.id_wahana,wahana_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter,subtotal);
 		fclose(ptr);
 
 		printf("\n\nData Pemesanan Sudah Disimpan !");
-		add_invalid2();
-}
-
-void dtpsn_tambah1(){
-    system("cls");
-    FILE *ptr,*ptr1;
-	int count=0;
-    int subtotal;
-	ptr =fopen("Data Detail Pemesanan.txt","a");
-		system("cls");
-		ptr1 =fopen("Data Detail Pemesanan.txt","r");
-		tambah_dtpsn.id=1;
-		while (fscanf (ptr1,"%d;%d;%d;%d;%d;%d;%d;%d\n",&tambah_dtpsn.id,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.id_wahana,&tambah_dtpsn.subtotal_anak,&tambah_dtpsn.subtotal_dws,&tambah_dtpsn.subtotal_domestik,&tambah_dtpsn.subtotal_inter,&subtotal)!=EOF)
-		{
-			tambah_dtpsn.id++;
-		}
-		cek_dtpsn.id = tambah_dtpsn.id;
-		fclose(ptr1);
-		printf ("masukan id wahana : ");fflush(stdin);
-		tambah_dtpsn.id_wahana=validasiBil1();
-		printf ("masukan jumlah anak : ");fflush(stdin);
-		tambah_dtpsn.subtotal_anak=validasiBil1();
-		printf ("masukan jumlah dewasa  : ");fflush(stdin);
-		tambah_dtpsn.subtotal_dws=validasiBil1();
-		printf ("masukan jumlah domestik : ");fflush(stdin);
-        tambah_dtpsn.subtotal_domestik=validasiBil1();
-		printf ("masukan jumlah internasional : ");fflush(stdin);
-		tambah_dtpsn.subtotal_inter=validasiBil1();
-		subtotal= calstotal(tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter);
-
-		fprintf(ptr,"id, id pemesanan, id wahana, jumlah anak, jumlah dewasa, jumlah domestik, jumlah internasional, subtotal harga\n");
-		fprintf(ptr,"%d;%d;%d;%d;%d;%d;%d;%d\n",tambah_dtpsn.id,psn_id,tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_anak,tambah_dtpsn.subtotal_dws,tambah_dtpsn.subtotal_domestik,tambah_dtpsn.subtotal_inter,subtotal);
-		fclose(ptr);
-
-		printf("\n\nData Pemesanan Sudah Disimpan !");
+		printf("%s", wahana_id);
 		add_invalid2();
 }
 
 
-int calstotal(id_wahana,subtotal_domestik,subtotal_inter){
+int calstotal(char*id_wahana,int subtotal_anak_dom,int subtotal_anak_inter,int subtotal_dws_dom,int subtotal_dws_inter){
     int total;
-    if(id_wahana==11){
-        total=((subtotal_domestik*harga_anak[0][0])+(subtotal_inter*harga_anak[0][1]));
-    }else if (id_wahana==12){
-        total=((subtotal_domestik*harga_anak[1][0])+(subtotal_inter*harga_anak[1][1]));
-    }else if (id_wahana==21){
-        total=((subtotal_domestik*harga_dewasa[0][0])+(subtotal_inter*harga_dewasa[0][1]));
-    }else if (id_wahana==22){
-        total=((subtotal_domestik*harga_dewasa[1][0])+(subtotal_inter*harga_dewasa[1][1]));
-    }else if (id_wahana==23){
-        total=((subtotal_domestik*harga_dewasa[2][0])+(subtotal_inter*harga_dewasa[2][1]));
-    }else if (id_wahana==24){
-        total=((subtotal_domestik*harga_dewasa[3][0])+(subtotal_inter*harga_dewasa[3][1]));
-    }else if (id_wahana==25){
-        total=((subtotal_domestik*harga_dewasa[4][0])+(subtotal_inter*harga_dewasa[4][1]));
-    }else if (id_wahana==26){
-        total=((subtotal_domestik*harga_dewasa[5][0])+(subtotal_inter*harga_dewasa[5][1]));
-    }else if (id_wahana==27){
-        total=((subtotal_domestik*harga_dewasa[6][0])+(subtotal_inter*harga_dewasa[6][1]));
-    }else if (id_wahana==31){
-        total=((subtotal_domestik*harga_dewasa[0][0])+(subtotal_inter*harga_dewasa[0][1]));
-    }else if (id_wahana==32){
-        total=((subtotal_domestik*harga_dewasa[1][0])+(subtotal_inter*harga_dewasa[1][1]));
-    }else if (id_wahana==33){
-        total=((subtotal_domestik*harga_dewasa[2][0])+(subtotal_inter*harga_dewasa[2][1]));
+    if(id_wahana=='11'){
+        total=((subtotal_anak_dom*harga_anak[0][0])+(subtotal_anak_inter*harga_anak[0][1]));
+    }else if (id_wahana=='12'){
+        total=((subtotal_anak_dom*harga_anak[1][0])+(subtotal_anak_inter*harga_anak[1][1]));
+    }else if (id_wahana=='13'){
+        total=((subtotal_anak_dom*harga_anak[2][0])+(subtotal_anak_inter*harga_anak[2][1]));
+    }else if (id_wahana=='21'){
+        total=((subtotal_dws_dom*harga_dewasa[0][0])+(subtotal_dws_inter*harga_dewasa[0][1]));
+    }else if (id_wahana=='22'){
+        total=((subtotal_dws_dom*harga_dewasa[1][0])+(subtotal_dws_inter*harga_dewasa[1][1]));
+    }else if (id_wahana=='23'){
+        total=((subtotal_dws_dom*harga_dewasa[2][0])+(subtotal_dws_inter*harga_dewasa[2][1]));
+    }else if (id_wahana=='24'){
+        total=((subtotal_dws_dom*harga_dewasa[3][0])+(subtotal_dws_inter*harga_dewasa[3][1]));
+    }else if (id_wahana=='25'){
+        total=((subtotal_dws_dom*harga_dewasa[4][0])+(subtotal_dws_inter*harga_dewasa[4][1]));
+    }else if (id_wahana=='26'){
+        total=((subtotal_dws_dom*harga_dewasa[5][0])+(subtotal_dws_inter*harga_dewasa[5][1]));
+    }else if (id_wahana=='27'){
+        total=((subtotal_dws_dom*harga_dewasa[6][0])+(subtotal_dws_inter*harga_dewasa[6][1]));
+    }else if (id_wahana=='31'){
+        total=((subtotal_anak_dom*harga_keluarga[0][0])+(subtotal_anak_inter*harga_keluarga[0][1])+(subtotal_dws_dom*harga_keluarga[0][0])+(subtotal_dws_inter*harga_keluarga[0][1]));
+    }else if (id_wahana=='32'){
+        total=((subtotal_anak_dom*harga_keluarga[1][0])+(subtotal_anak_inter*harga_keluarga[1][1])+(subtotal_dws_dom*harga_keluarga[1][0])+(subtotal_dws_inter*harga_keluarga[1][1]));
+    }else if (id_wahana=='33'){
+        total=((subtotal_anak_dom*harga_keluarga[2][0])+(subtotal_anak_inter*harga_keluarga[2][1])+(subtotal_dws_dom*harga_keluarga[2][0])+(subtotal_dws_inter*harga_keluarga[2][1]));
     }else {
         total=0;
     }
     return total;
 }
+
 
 void add_invalid2(){
     int pilihan;
@@ -350,7 +361,7 @@ void add_invalid2(){
             pesanan();
         break;
         case 2:
-            pesanan();
+            dtpsn_tambah();
         break;
         case 3:
             tambahdata_psn();
@@ -365,7 +376,6 @@ void add_invalid2(){
 
     }
 }
-
 
 
 /*void editdata(){
