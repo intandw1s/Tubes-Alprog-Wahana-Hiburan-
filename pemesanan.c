@@ -250,7 +250,7 @@ void pesan3(){
 }
 */
 
-/*void dewas(){
+/*void dewasa(){
     int pilihan;
 
     printf("\t\t\t\t+--------------------------------------------------------------------------------------------------------+\n");
@@ -335,7 +335,7 @@ void pesan3(){
 	     break;
          case 2:
              printf("data");
-             //dewasa();
+             dewasa();
          break;
 	     default:
              printf("\t\t\t\t||=================================================||\n");
