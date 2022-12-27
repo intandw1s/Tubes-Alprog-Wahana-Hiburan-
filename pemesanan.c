@@ -249,3 +249,110 @@ void pesan3(){
 	  }
 }
 */
+
+/*void dewas(){
+    int pilihan;
+
+    printf("\t\t\t\t+--------------------------------------------------------------------------------------------------------+\n");
+    printf("\t\t\t\t|                                                                                                        |\n");
+    printf("\t\t\t\t|                                              LalaFund Land                                             |\n");
+    printf("\t\t\t\t|                                           PEMESANAN WAHANA DEWASA                                      |\n");
+    printf("\t\t\t\t|                                                                                                        |\n");
+    printf("\t\t\t\t+-------------------+-------------------+---------------------+-----------------+------------------------+\n");
+    printf("\t\t\t\t|       KODE        |     KATEGORI      |     NAMA WAHANA     | HARGA(DOMESTIK) |  HARGA(INTERNASIONAL)  |\n");
+    printf("\t\t\t\t+-------------------+-------------------+---------------------+-----------------+------------------------+\n");
+    printf("\t\t\t\t|         1         |    WAHANA AIR     |     WATERPARK       |   Rp. 120.000   |     Rp.150.000         |\n");
+    printf("\t\t\t\t|                   |                   |     ARUNG JERAM     |                 |                        |\n");
+    printf("\t\t\t\t|                   |                   |     SURF RIDER      |                 |                        |\n");
+    printf("\t\t\t\t|                   |                   |     LAZY RIVER      |                 |                        |\n");
+    printf("\t\t\t\t|         2         |  WAHANA ADVENTURE |     OUTBOND GAMES   |   Rp.85.000     |       Rp.100.000       |\n");
+    printf("\t\t\t\t|                   |                   |     ATV RIDE        |                 |                        |\n");
+    printf("\t\t\t\t|         3         |  WAHANA BERMAIN   |     LalaFundBOOM    |   Rp.60.000     |       Rp.80.000        |\n");
+    printf("\t\t\t\t+-------------------+-------------------+---------------------+-----------------+------------------------+\n");
+    printf("\t\t\t\tMasukkan Kode(0) Untuk Kembali\n");
+    printf("\t\t\t\tMasukkan Pilihan Anda           :");
+    pilihan=validasiBil();
+    printf("\n");
+    printf("\t\t\t\t==========================================================================================================\n");
+    switch (pilihan){
+        case 0:
+            pesan3();
+        break;
+	    case 1:
+            printf("\t\t\t\tMasukkan Jumlah Tiket pada Kode 1:");
+            tiketjmldewasa1=validasiBil();
+	    break;
+        case 2:
+            printf("\t\t\t\tMasukkan Jumlah Tiket pada Kode 2:");
+            tiketjmldewasa2=validasiBil();
+	    break;
+	    case 3:
+            printf("\t\t\t\tMasukkan Jumlah Tiket pada Kode 3:");
+            tiketjmldewasa3=validasiBil();
+        break;
+	    default:
+            printf("\t\t\t\t||=================================================||\n");
+            printf("\t\t\t\t||                                                 ||\n");
+            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
+            printf("\t\t\t\t||                                                 ||\n");
+            printf("\t\t\t\t||=================================================||\n");
+            printf("\t\t\t\t||                                                 ||\n");
+            printf("\t\t\t\t||             PILIHAN TIDAK TERSEDIA ^.^          ||\n");
+            printf("\t\t\t\t||                                                 ||\n");
+            printf("\t\t\t\t||=================================================||\n");
+            sleep(3);
+            system("cls");
+            dewasa();
+	 }
+
+             konfirdewasa();
+}
+*/
+/*void konfirdewasa(){
+     int pilihan ;
+
+     printf("\n");
+     printf("\t\t\t\t||=================================================||\n");
+     printf("\t\t\t\t||                                                 ||\n");
+     printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
+     printf("\t\t\t\t||                                                 ||\n");
+     printf("\t\t\t\t||=================================================||\n");
+     printf("\t\t\t\t||                                                 ||\n");
+     printf("\t\t\t\t||     Apakah Anda Ingin Menambah Tiket Dewasa?    ||\n");
+     printf("\t\t\t\t||                                                 ||\n");
+     printf("\t\t\t\t||=================================================||\n");
+     printf("\t\t\t\t1.Yes\n");
+     printf("\t\t\t\t2.No\n");
+     printf("\t\t\t\tMasukkan Pilihan Anda :");
+     pilihan=validasiBil();
+     printf("\t\t\t\t-------------------------------------------------\n");
+     printf("\n");
+     system("cls");
+
+     switch (pilihan){
+	     case 1:
+             anak();
+	     break;
+         case 2:
+             printf("data");
+             //dewasa();
+         break;
+	     default:
+             printf("\t\t\t\t||=================================================||\n");
+             printf("\t\t\t\t||                                                 ||\n");
+             printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
+             printf("\t\t\t\t||                                                 ||\n");
+             printf("\t\t\t\t||=================================================||\n");
+             printf("\t\t\t\t||                                                 ||\n");
+             printf("\t\t\t\t||             PILIHAN TIDAK TERSEDIA ^.^          ||\n");
+             printf("\t\t\t\t||                                                 ||\n");
+             printf("\t\t\t\t||=================================================||\n");
+             sleep(3);
+             system("cls");
+             konfirdewasa();
+	  }
+}
+*/
+
+
+
