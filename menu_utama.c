@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "admin/crud_wahana.c"
+#include "crud_wahana.c"
+#include "crud_pemesanan.c"
 
 int validasimenu() {
     int i = 0;
@@ -116,12 +117,10 @@ void menu(){
             datalihat();
 	    break;
         case 2:
-            printf("MENU 2");
-            //pesan1();
+            pesanan();
 	    break;
 	    case 3:
-           // riwayat();
-           printf("ini riwayat");
+            lihatdata_psn();
 	    break;
 	    case 4:
             intruksi();

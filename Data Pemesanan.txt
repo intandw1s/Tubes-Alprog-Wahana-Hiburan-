@@ -1,11 +1,2 @@
-1;yuyu;
-2;Lulu\;
-3;Lulu;
-4;Lala;
-5;Lulu;
-6;Ayuk;
-7;Yuk;
-8;Lili;
-9;Yuni;
-10;suni;
-11;yuki;
+2;yuta;
+3;yuna;

@@ -107,9 +107,9 @@ float validasiBil1(){
     }
 }
 
-int main(){
+/*int main(){
     wahanaAdmin();
-}
+}*/
 void wahanaAdmin(){
     int pilihan;
     printf("\t\t\t\t+-------------------------------------------------+\n");

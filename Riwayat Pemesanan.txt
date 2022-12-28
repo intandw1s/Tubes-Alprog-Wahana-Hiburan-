@@ -1,0 +1,37 @@
+
+
+
+
+			 Data Transaksi      
+
+			 Wed Dec 28 19:44:37 2022
+			 ID Pemesanan      : 2
+			 Nama Pemesan      : yuta
+
+			 ID Pemesanan      : 3
+			 Nama Pemesan      : yuna
+
+
+
+			 Data Detail Transaksi      
+
+			 ID Detail Pemesanan      : 2
+			 ID Pemesanan             : 2
+			 Nama Wahana              : Waterpark
+			 Subtotal                 : 500000
+
+			 ID Detail Pemesanan      : 3
+			 ID Pemesanan             : 3
+			 Nama Wahana              : Outbound Games Kids
+			 Subtotal                 : 700000
+
+			 ID Detail Pemesanan      : 4
+			 ID Pemesanan             : 2
+			 Nama Wahana              : LalaFundPark
+			 Subtotal                 : 150000
+
+			 ID Detail Pemesanan      : 5
+			 ID Pemesanan             : 2
+			 Nama Wahana              : Outbound Games Kids
+			 Subtotal                 : 160000
+
