@@ -633,7 +633,7 @@ void edit_psninvalid(){
     }
 }
 
-void edit_psninvalid(){
+void edit_psnvalid(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
     printf("\n\t\t\t\t[1] Edit Detail ");
@@ -672,7 +672,7 @@ void edit_psninvalid(){
             printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
-            edit_psninvalid();
+            edit_psnvalid();
         break;
     }
 }
