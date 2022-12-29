@@ -6,7 +6,7 @@
 #include "crud_pemesanan.c"
 
 //Cek Bilangan
-float validasiBil(){
+float validasipil(){
     int i = 0;
     int salah =0;
     int titik=0;
@@ -45,7 +45,7 @@ float validasiBil(){
         printf("\t\t\t\t||                                                 ||\n");
         printf("\t\t\t\t||=================================================||\n");
         printf("\t\t\t\t  Silahkan Masukkan Ulang : ");
-        validasiBil();
+        validasipil();
     }else{
         val = atof(angka);
         return val;
@@ -56,22 +56,35 @@ int main(){
     menuadmin();
 }
 
+    printf("\t\t\t\t+===========================================================================+\n");
+    printf("\t\t\t\t|           	           Om swastyastu! Hi! Ni Hao!                       |\n");
+    printf("\t\t\t\t|              	       ^0^ S E L A M A T  D A T A N G ^v^                   |\n");
+    printf("\t\t\t\t|...........................................................................|\n");
+    printf("\t\t\t\t|========================= Welcome to LalaFund Land ========================|\n");
+    printf("\t\t\t\t|...........................................................................|\n");
+    printf("\t\t\t\t|                                 A D M I N                                 |\n");
+    printf("\t\t\t\t+===========================================================================+\n\n");
+
+int sekalimuncul = 0;
 void menuadmin(){
+    if (sekalimuncul != 1){
+    cover();
+    sekalimuncul=1;
+    }
     int pilihan;
     printf("\t\t\t\t+-------------------------------------------------+\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t|                  LalaFund Land                  |\n");
-    printf("\t\t\t\t|                   Menu Utama                    |\n");
+    printf("\t\t\t\t|                   Menu Admin                    |\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t+-------------------------------------------------+\n");
     printf("\t\t\t\tPilihan Menu :\n\n");
     printf("\t\t\t\t1.Tabel Wahana\n");
     printf("\t\t\t\t2.Tabel Pemesanan\n");
-    //printf("\t\t\t\t3.Tabel Detail Pemesanan\n");
-    printf("\t\t\t\t4.Keluar\n");
+    printf("\t\t\t\t3.Keluar\n");
     printf("\t\t\t\t-------------------------------------------------\n");
     printf("\t\t\t\tMasukkan Pilihan Anda :");
-    pilihan=validasiBil();
+    pilihan=validasipil();
     printf("\n");
     system("cls");
 
@@ -83,6 +96,12 @@ void menuadmin(){
             pesanan()
 	    break;
         case 4:
+            printf("\t\t\t\t+=================================================+\n");
+            printf("\t\t\t\t|                     PROGRAM                     |\n");
+            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
+            printf("\t\t\t\t|.................................................|\n");
+            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
+            printf("\t\t\t\t+=================================================+\n\n");
             exit(1);
         break;
 	    default:

@@ -189,12 +189,6 @@ void pesanan(){
             menu();
         break;
         case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
             exit(1);
 	    default:
             printf("\t\t\t\t||=================================================||\n");
@@ -321,7 +315,7 @@ void dtpsn_tambah(){
 		fclose(ptr);
 
 		struk_1(id_psn);
-        printf("\n\n\t\t\t\t+.................................................+\n");
+        printf("\n\n\t\t\t\t+..................................................+\n");
 		printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
 		add_done2();
 }
@@ -364,18 +358,14 @@ int calstotal(char*id_wahana,int subtotal_anak_dom,int subtotal_anak_inter,int s
 
 void add_done2(){
     int pilihan;
-    printf("\n\t\t\t\t+.................................................+\n");
+    printf("\n\t\t\t\t+..................................................+\n");
     printf("\n\t\t\t\t[1] Menambah Pesanan");
     printf("\n\t\t\t\t[2] Menu Utama      ");
     printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
     printf("\n\n\t\t\t\tMasukkan Pilihan Anda  : ");
     pilihan=validasibilangan();
     switch(pilihan){
         case 1:
-            dtpsn_tambah();
-        break;
-        case 2:
             printf("\t\t\t\t+=================================================+\n");
             printf("\t\t\t\t|                     PEMESANAN                   |\n");
             printf("\t\t\t\t|                  TELAH BERHASIL                 |\n");
@@ -384,7 +374,13 @@ void add_done2(){
             printf("\t\t\t\t+=================================================+\n\n");
             system("pause");
             system("cls");
+            dtpsn_tambah();
+        break;
+        case 2:
             pesanan();
+        break;
+        case 3:
+            editdata_psn();
         break;
         case 0:
             printf("\t\t\t\t+=================================================+\n");
@@ -460,13 +456,6 @@ void struk_1(int pemesanan){
 	printf("%d", pemesanan);
 	cek_dtpsn.id_pemesanan = pemesanan;
 	cek_psn.id_psn = pemesanan;
-	fprintf(baru,"\t\t\t\t+========================================================================+\n");
-    fprintf(baru,"\t\t\t\t|                              LalaFund Land                             |\n");
-    fprintf(baru,"\t\t\t\t|------------------------------------------------------------------------|\n");
-    fprintf(baru,"\t\t\t\t|                       B U K T I  P E M B A Y A R A N                   |\n");
-    fprintf(baru,"\t\t\t\t+========================================================================+\n\n");
-    fprintf(baru,"\t\t\t\t %3s", ctime(&mytime));
-
 	while(fscanf (lama,"%d;%d;%d;%d;%d;%d;%d;%[^\n];%[^\n]\n",&tambah_dtpsn.id_det_psn,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn)!=EOF)
 	{
         while (fscanf (lama1,"%d;%[^;];\n",&tambah_psn.id_psn,tambah_psn.nama_psn)!=EOF)
@@ -475,8 +464,9 @@ void struk_1(int pemesanan){
                 /*fprintf(baru,"\n%s", ctime(&mytime));
                 fprintf(baru,"\t\t\t ID Pemesanan      : %d\n", tambah_psn.id_psn);
                 fprintf(baru,"\t\t\t Nama Pemesan      : %s\n", tambah_psn.nama_psn);*/
-                fprintf(baru,"\t\t\t ID Pemesanan       : %d\n", tambah_psn.id_psn);
-                fprintf(baru,"\t\t\t Nama Pemesan       : %s\n", tambah_psn.nama_psn);
+                printf("\n%s", ctime(&mytime));
+                printf("\t\t\t ID Pemesanan      : %d\n", tambah_psn.id_psn);
+                printf("\t\t\t Nama Pemesan      : %s\n", tambah_psn.nama_psn);
 			}
 
 
@@ -492,11 +482,10 @@ void struk_1(int pemesanan){
            tambah_dtpsn.nama_whn = wahana_id;
            subtotal= calstotal(whn_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
            tambah_dtpsn.subtotal_harga = subtotal;
-           fprintf(baru1,"\t\t\t ID Detail Pemesanan    : %d\n", tambah_dtpsn.id_det_psn);
-           fprintf(baru1,"\t\t\t ID Pemesanan           : %d\n", tambah_dtpsn.id_pemesanan);
-           fprintf(baru1,"\t\t\t Nama Wahana            : %s\n", tambah_dtpsn.nama_whn);
-           fprintf(baru1,"\t\t\t Subtotal Harga         : %d\n", tambah_dtpsn.subtotal_harga);
-           fprintf(baru1,"\t\t\t.........................................................................\n");
+           printf("\t\t\t ID Detail Pemesanan      : %d\n", tambah_dtpsn.id_det_psn);
+           printf("\t\t\t ID Pemesanan             : %d\n", tambah_dtpsn.id_pemesanan);
+           printf("\t\t\t Nama Wahana              : %s\n", tambah_dtpsn.nama_whn);
+           printf("\t\t\t Subtotal                 : %d\n", tambah_dtpsn.subtotal_harga);
            test++;
            total+= tambah_dtpsn.subtotal_harga;
            n++;
@@ -504,11 +493,8 @@ void struk_1(int pemesanan){
 
     }
            total = total - n;
-           fprintf(baru1,"\t\t\t\t Total                    : %d\n", total);
-    fprintf(baru1,"\t\t\t\t=========================================================================\n");
-    fprintf(baru1,"\t\t\t\t                ^o^ THANKYOU & ENJOY YOUR DAY IN  ^v^                    \n");
-    fprintf(baru1,"\t\t\t\t                      L A L A F U N D  L A N D                           \n");
-    fprintf(baru1,"\t\t\t\t=========================================================================\n");
+           printf("\t\t\t Total                    : %d\n", total);
+
     fclose(lama);
 	fclose(baru);
 	if(test > 0){
@@ -523,49 +509,30 @@ void editdata_psn(){
 	lama = fopen("Data Pemesanan.txt","r");
 	baru = fopen ("Data Pemesanan Update.txt","w");
 	//system("cls");
-    printf("\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t|                   LalaFund Land                 |\n");
-    printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\t|             E D I T   P E M E S A N A N         |\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t+=================================================+\n");
-	printf("\t\t\t\tMasukan ID Pemesanan : ");
+
+	printf ("Masukan ID Pemesanan : ");
 	cek_psn.id_psn=validasibilangan();
 	while(fscanf (lama,"%d;%[^;];\n",&tambah_psn.id_psn,tambah_psn.nama_psn)!=EOF)
 	{
 		if(tambah_psn.id_psn == cek_psn.id_psn){
 			test=1;
 			ganti:
-                printf("\t\t\t\t+-------------------------------------------------+\n");
-                printf("\t\t\t\tID Pemesanan : %d  ||  Pemesan dengan Nama : %s",tambah_psn.id_psn,tambah_psn.nama_psn);
-				printf("\n\n\t\t\t\tData yang akan diganti : ");
-				printf("\n\t\t\t\t[1]. Nama Pengguna");
-                printf("\t\t\t\t+-------------------------------------------------+\n");
-				printf("\n\t\t\t\tMasukkan Pilihan Anda  : ");
+				printf("\ID Pemesanan : %d dimiliki pada oleh Pemesan dengan Nama : %s",tambah_psn.id_psn,tambah_psn.nama_psn);
+				printf("\n\nData yang akan diganti : ");
+				printf("\n[1]. Nama Pengguna");
+				printf("\nInput Pilihan : ");
                 pilih=validasibilangan();
 
 				if(pilih == 1)
 				{
-                    printf("\n\t\t\t\t...................................................\n");
-					printf("\t\t\t\tMasukan Nama Pemesan Baru : ");fflush(stdin);
+					printf ("\nMasukan Nama Pemesan Baru : ");fflush(stdin);
 					scanf ("%[^\n]",cek_psn.nama_psn);
 					strcpy(tambah_psn.nama_psn,cek_psn.nama_psn);
-                    fprintf(baru,"%d;%s;\n",tambah_psn.id_psn,tambah_psn.nama_psn);
-                    printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
+						fprintf(baru,"%d;%s;\n",tambah_psn.id_psn,tambah_psn.nama_psn);
+					printf ("\nPerubahan Sudah Disimpan !");
 				}else{
-
-                    printf("\t\t\t\t||=================================================||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||=================================================||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||=================================================||\n");
-                    editdata_psn();
+					printf("\n\nInput Anda Salah !");
+					editdata_psn();
 				}
 		}
 		else
@@ -579,18 +546,9 @@ void editdata_psn(){
 	remove("Data Pemesanan.txt");
 	rename("Data Pemesanan Update.txt","Data Pemesanan.txt");
 	if(test!=1){
-
-            system("cls");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  DATA TIDAK DITEMUKAN  U_U        ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            edit_invalid();
+		system("cls");
+        printf("\nData tidak ditemukan !\a\a\a");
+        edit_invalid();
         }
     else{
     	edit_valid();
@@ -599,79 +557,38 @@ void editdata_psn(){
 
 void edit_invalid(){
     int pilih;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Silahkan Ulangi");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/0] :");
-    pilih=validasibilangan();
-    switch(pilih){
-        case 1:
-            editdata_psn();
-        break;
-        case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
-            exit(0);
-        break;
-        default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+        printf("\nInput 0 untuk mencoba lagi, 1 untuk ke menu utama dan 2 untuk keluar :");
+        pilih=validasibilangan();
+        switch(pilih){
+            case 0:
+                editdata_psn();
+            break;
+            case 1:
+                pesanan();
+            break;
+            case 2:
+                exit(0);
+            break;
+            default:
+                printf("\nMaaf Kesalahan Input !");
             edit_invalid();
-        break;
-    }
+            break;
+        }
 }
 
 void edit_valid(){
     int pilihan;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Edit Detail ");
-    printf("\n\t\t\t\t[2] Mengedit Pemesanan Lagi");
-    printf("\n\t\t\t\t[3] Menu Utama");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
+    printf("\n\n\nInput 1 untuk ke menu selanjutnya dan 0 untuk keluar :");
     pilihan=validasibilangan();
     switch(pilihan){
         case 1:
             editdatadt_psn();
         break;
-        case 2:
-            editdata();
-        break;
-        case 3:
-            pesanan();
-        break;
         case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
             exit(0);
         break;
         default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+            printf("\nMaaf Kesalahan Input !");
             edit_valid();
         break;
     }
@@ -687,58 +604,46 @@ void editdatadt_psn(){
 	lama = fopen("Data Detail Pemesanan.txt","r");
 	baru = fopen ("Data Detail Pemesanan Update.txt","w");
 	//system("cls");
-    printf("\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t|                   LalaFund Land                 |\n");
-    printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\t|      E D I T  D E T A I L  P E M E S A N A N    |\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t+=================================================+\n");
-	printf("\t\t\t\tMasukan ID Detail Pemesanan : ");
+
+	printf ("Masukan ID Detail Pemesanan : ");
 	cek_dtpsn.id_det_psn=validasibilangan();
 	while(fscanf (lama,"%d;%d;%d;%d;%d;%d;%d;%[^\n];%[^\n]\n",&tambah_dtpsn.id_det_psn,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn)!=EOF)
 	{
 		if(tambah_dtpsn.id_det_psn == cek_dtpsn.id_det_psn){
             test=1;
             ganti:
-                printf("\t\t\t\t+-------------------------------------------------+\n");
-				printf("\t\t\t\tID Detail Pemesanan : %d  || ID Pemesanan : %d",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan);
-				printf("\n\n\t\t\t\tData yang akan diganti : ");
-				printf("\n\t\t\t\t[1]. Id Pemesanan");
-                printf("\n\t\t\t\t[2]. Id Wahana");
-				printf("\n\t\t\t\t[3]. Jumlah Anak   [Domestik]");
-				printf("\n\t\t\t\t[4]. Jumlah Anak   [Internasional]");
-				printf("\n\t\t\t\t[5]. Jumlah Dewasa [Domestik] ");
-				printf("\n\t\t\t\t[6]. Jumlah Dewasa [Internasional]");
-				printf("\n\t\t\t\tMasukkan Pilihan Anda    : ");
+				printf("\ID Detail Pemesanan : %d dengan ID Pemesanan : %d",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan);
+				printf("\n\nData yang akan diganti : ");
+				printf("\n[1]. Id Pemesanan");
+                printf("\n[2]. Id Wahana");
+				printf("\n[3]. Jumlah Anak   [Domestik]");
+				printf("\n[4]. Jumlah Anak   [Internasional]");
+				printf("\n[5]. Jumlah Dewasa [Domestik] ");
+				printf("\n[6]. Jumlah Dewasa [Internasional]");
+				printf("\nInput Pilihan : ");
                 pilih=validasibilangan();
 
 				if(pilih == 1)
 				{
-                    printf("\n\t\t\t\t...................................................\n");
-                    printf("\n\t\t\t\tMasukan ID Pemesanan Baru            : ");
+                    printf("\nMasukan ID Pemesanan Baru            : ");
                     fflush(stdin);
 					scanf ("%d",&cek_dtpsn.id_pemesanan);
                     tambah_dtpsn.id_pemesanan = cek_dtpsn.id_pemesanan;
                     fprintf(baru,"%d;%d;%d;%d;%d;%d;%d;%s\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter,tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn);
-                    printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
+					printf ("\nPerubahan Sudah Disimpan !");
 				}else if (pilih == 2)
 				{
-                    printf("\n\t\t\t\t...................................................\n");
-                    printf ("\n\t\t\t\tMasukan ID Wahana Baru              : ");
+                    printf ("\nMasukan ID Wahana Baru               : ");
                     fflush(stdin);
 					scanf ("%[^\n]",cek_dtpsn.id_wahana);
 					strcpy(tambah_dtpsn.id_wahana,cek_dtpsn.id_wahana);
 					wahana_id=nm_wahana(tambah_dtpsn.id_wahana);
                     tambah_dtpsn.nama_whn = wahana_id;
                     fprintf(baru,"%d;%d;%d;%d;%d;%d;%d;%s;%s\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter,tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn);
-                    printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
+					printf ("\nPerubahan Sudah Disimpan !");
 				}else if (pilih == 3)
 				{
-                    printf("\n\t\t\t\t...................................................\n");
-					printf("\nMasukan Jumlah Anak [Domestik]       : ");fflush(stdin);
+					printf("\nMasukan Jumlah Anak [Domestik]        : ");fflush(stdin);
 					cek_dtpsn.subtotal_anak_dom=validasibilangan();
 					tambah_dtpsn.subtotal_anak_dom = cek_dtpsn.subtotal_anak_dom;
 					//whn_id = tambah_dtpsn.id_wahana;
@@ -747,11 +652,9 @@ void editdatadt_psn(){
 					subtotal= calstotal(whn_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
                     tambah_dtpsn.subtotal_harga = subtotal;
                     fprintf(baru,"%d;%d;%d;%d;%d;%d;%d;%s\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter,tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn);
-                    printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
+					printf ("\nPerubahan Sudah Disimpan !");
 				}else if (pilih == 4)
 				{
-                    printf("\n\t\t\t\t...................................................\n");
 					printf("\nMasukan Jumlah Anak [Internasional]   : ");fflush(stdin);
 					cek_dtpsn.subtotal_anak_inter=validasibilangan();
 					tambah_dtpsn.subtotal_anak_inter = cek_dtpsn.subtotal_anak_inter;
@@ -760,11 +663,9 @@ void editdatadt_psn(){
 					subtotal= calstotal(whn_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
                     tambah_dtpsn.subtotal_harga = subtotal;
                     fprintf(baru,"%d;%d;%d;%d;%d;%d;%d;%s\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter,tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn);
-                    printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
+					printf ("\nPerubahan Sudah Disimpan !");
 				}else if (pilih == 5)
 				{
-                    printf("\n\t\t\t\t...................................................\n");
 					printf("\nMasukan Jumlah Dewasa [Domestik]      : ");fflush(stdin);
                     cek_dtpsn.subtotal_dws_dom=validasibilangan();
 					tambah_dtpsn.subtotal_dws_dom=cek_dtpsn.subtotal_dws_dom;
@@ -773,11 +674,9 @@ void editdatadt_psn(){
 					subtotal= calstotal(whn_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
                     tambah_dtpsn.subtotal_harga = subtotal;
                     fprintf(baru,"%d;%d;%d;%d;%d;%d;%d;%s\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter,tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn);
-                    printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
+					printf ("\nPerubahan Sudah Disimpan !");
 				}else if (pilih == 6)
 				{
-                    printf("\n\t\t\t\t...................................................\n");
 					printf("\nMasukan Jumlah Dewasa [Internasional] : ");fflush(stdin);
 					cek_dtpsn.subtotal_dws_inter=validasibilangan();
 					tambah_dtpsn.subtotal_dws_inter=cek_dtpsn.subtotal_dws_inter;
@@ -786,18 +685,9 @@ void editdatadt_psn(){
 					subtotal= calstotal(whn_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
                     tambah_dtpsn.subtotal_harga = subtotal;
                     fprintf(baru,"%d;%d;%d;%d;%d;%d;%d;%s\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter,tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn);
-                    printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah Disimpan (✿◕‿◕✿)");
+					printf ("\nPerubahan Sudah Disimpan !");
 				}else{
-                    printf("\t\t\t\t||=================================================||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||=================================================||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
-                    printf("\t\t\t\t||                                                 ||\n");
-                    printf("\t\t\t\t||=================================================||\n");
+					printf("\n\nInput Anda Salah !");
 					editdatadt_psn();
 				}
 				id_psn = tambah_dtpsn.id_pemesanan;
@@ -817,15 +707,7 @@ void editdatadt_psn(){
 	rename("Data Detail Pemesanan Update.txt","Data Detail Pemesanan.txt");
 	if(test!=1){
 		system("cls");
-        printf("\t\t\t\t||=================================================||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||=================================================||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||           U_U  DATA TIDAK DITEMUKAN  U_U        ||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||=================================================||\n");
+        printf("\nData tidak ditemukan !\a\a\a");
         editdt_invalid();
         }
     else{
@@ -835,79 +717,40 @@ void editdatadt_psn(){
 
 void editdt_invalid(){
     int pilih;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Silahkan Ulangi");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/0] :");
-    pilih=validasibilangan();
-    switch(pilih){
-        case 1:
-            editdatadt_psn();
-        break;
-        case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
-            exit(0);
-        break;
-        default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH    U_U        ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+        printf("\nInput 0 untuk mencoba lagi, 1 untuk ke menu utama dan 2 untuk keluar :");
+        pilih=validasibilangan();
+        switch(pilih){
+            case 0:
+                editdatadt_psn();
+            break;
+            case 1:
+                pesanan();
+            break;
+            case 2:
+                exit(0);
+            break;
+            default:
+                printf("\nMaaf Kesalahan Input !");
             editdt_invalid();
-        break;
+            break;
         }
 }
 
 void editdt_valid(){
     int pilihan;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Edit Detail Lagi ");
-    printf("\n\t\t\t\t[2] Edit Pemesanan ");
-    printf("\n\t\t\t\t[3] Menu Utama");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
+    printf("\n\n\nInput 1 untuk ke menambah perubahan 2 untuk ke menu utama dan 0 untuk keluar :");
     pilihan=validasibilangan();
     switch(pilihan){
         case 1:
             editdatadt_psn();
-        break;
         case 2:
-            editdata();
-        break;
-        case 3:
             pesanan();
         break;
         case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
             exit(0);
         break;
         default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U         ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+            printf("\nMaaf Kesalahan Input !");
             editdt_valid();
         break;
     }
@@ -926,31 +769,20 @@ void lihatdata_psn(){
     lama1 = fopen("Data Pemesanan.txt","r");
 	system("cls");
 
-    printf("\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t|                   LalaFund Land                 |\n");
-    printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\t|            D A T A   P E M E S A N A N          |\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t+=================================================+\n\n");
-    printf("\t\t\t\t %s", ctime(&mytime));
-    printf("\n\t\t\t\t||------------------------------------------------||\n");
-    printf("\t\t\t\t                   Data Transaksi                   \n");
-    printf("\t\t\t\t||------------------------------------------------||\n");
-
+    printf("\n\n");
+    printf("\n\n\t\t\t Data Transaksi      \n\n");
+    printf("\t\t\t %s", ctime(&mytime));
     while (fscanf (lama1,"%d;%[^;];\n",&tambah_psn.id_psn,tambah_psn.nama_psn)!=EOF)
     {
 
                 printf("\n");
-                printf("\t\t\t\t ID Pemesanan      : %d\n", tambah_psn.id_psn);
-                printf("\t\t\t\t Nama Pemesan      : %s\n", tambah_psn.nama_psn);
+                printf("\t\t\t ID Pemesanan      : %d\n", tambah_psn.id_psn);
+                printf("\t\t\t Nama Pemesan      : %s\n", tambah_psn.nama_psn);
                 printf("\n");
 
 
     }
-    printf("\n\n\t\t\t\t||------------------------------------------------||\n");
-    printf("\t\t\t\t                 Data Detail Transaksi              \n");
-    printf("\t\t\t\t||------------------------------------------------||\n");
+    printf("\n\n\t\t\t Data Detail Transaksi \n\n");
 	while(fscanf (lama,"%d;%d;%d;%d;%d;%d;%d;%[^\n];%[^\n]\n",&tambah_dtpsn.id_det_psn,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn)!=EOF)
 	{
 
@@ -961,10 +793,10 @@ void lihatdata_psn(){
            subtotal= calstotal(whn_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
            tambah_dtpsn.subtotal_harga = subtotal;
 
-           printf("\t\t\t\t ID Detail Pemesanan    : %d\n", tambah_dtpsn.id_det_psn);
-           printf("\t\t\t\t ID Pemesanan           : %d\n", tambah_dtpsn.id_pemesanan);
-           printf("\t\t\t\t Nama Wahana            : %s\n", tambah_dtpsn.nama_whn);
-           printf("\t\t\t\t Subtotal Harga         : %d\n", tambah_dtpsn.subtotal_harga);
+           printf("\t\t\t ID Detail Pemesanan      : %d\n", tambah_dtpsn.id_det_psn);
+           printf("\t\t\t ID Pemesanan             : %d\n", tambah_dtpsn.id_pemesanan);
+           printf("\t\t\t Nama Wahana              : %s\n", tambah_dtpsn.nama_whn);
+           printf("\t\t\t Subtotal                 : %d\n", tambah_dtpsn.subtotal_harga);
            printf("\n");
 
            test=1;
@@ -996,17 +828,10 @@ void cetakdata_psn(){
     lama1 = fopen("Data Pemesanan.txt","r");
     baru = fopen("Riwayat Pemesanan.txt","w");
 	system("cls");
-    fprintf(baru,"\t\t\t\t+=================================================+\n");
-    fprintf(baru,"\t\t\t\t|                                                 |\n");
-    fprintf(baru,"\t\t\t\t|                   LalaFund Land                 |\n");
-    fprintf(baru,"\t\t\t\t+-------------------------------------------------+\n");
-    fprintf(baru,"\t\t\t\t|            D A T A   P E M E S A N A N          |\n");
-    fprintf(baru,"\t\t\t\t|                                                 |\n");
-    fprintf(baru,"\t\t\t\t+=================================================+\n\n");
-    fprintf(baru,"\t\t\t\t %s", ctime(&mytime));
-    fprintf(baru,"\n\t\t\t\t||------------------------------------------------||\n");
-    fprintf(baru,"\t\t\t\t                   Data Transaksi                   \n");
-    fprintf(baru,"\t\t\t\t||------------------------------------------------||\n");
+
+    fprintf(baru,"\n\n");
+    fprintf(baru,"\n\n\t\t\t Data Transaksi      \n\n");
+    fprintf(baru,"\t\t\t %s", ctime(&mytime));
     while (fscanf (lama1,"%d;%[^;];\n",&tambah_psn.id_psn,tambah_psn.nama_psn)!=EOF)
     {
 
@@ -1018,10 +843,8 @@ void cetakdata_psn(){
 
     }
 
-    fprintf(baru,"\n\t\t\t\t||------------------------------------------------||\n");
-    fprintf(baru,"\t\t\t\t                Data Detail Transaksi                 \n");
-    fprintf(baru,"\t\t\t\t||------------------------------------------------||\n");
-    while(fscanf (lama,"%d;%d;%d;%d;%d;%d;%d;%[^\n];%[^\n]\n",&tambah_dtpsn.id_det_psn,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn)!=EOF)
+	fprintf(baru,"\n\n\t\t\t Data Detail Transaksi      \n\n");
+	while(fscanf (lama,"%d;%d;%d;%d;%d;%d;%d;%[^\n];%[^\n]\n",&tambah_dtpsn.id_det_psn,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn)!=EOF)
 	{
 
            strncpy(whn_id,tambah_dtpsn.id_wahana,2);
@@ -1031,10 +854,10 @@ void cetakdata_psn(){
            subtotal= calstotal(whn_id,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
            tambah_dtpsn.subtotal_harga = subtotal;
            //printf("\n\n\t\t\t Data Detail Transaksi \n\n");
-           fprintf(baru,"\t\t\t\tID Detail Pemesanan   : %d\n", tambah_dtpsn.id_det_psn);
-           fprintf(baru,"\t\t\t\tID Pemesanan          : %d\n", tambah_dtpsn.id_pemesanan);
-           fprintf(baru,"\t\t\t\tNama Wahana           : %s\n", tambah_dtpsn.nama_whn);
-           fprintf(baru,"\t\t\t\tSubtotal              : %d\n", tambah_dtpsn.subtotal_harga);
+           fprintf(baru,"\t\t\t ID Detail Pemesanan      : %d\n", tambah_dtpsn.id_det_psn);
+           fprintf(baru,"\t\t\t ID Pemesanan             : %d\n", tambah_dtpsn.id_pemesanan);
+           fprintf(baru,"\t\t\t Nama Wahana              : %s\n", tambah_dtpsn.nama_whn);
+           fprintf(baru,"\t\t\t Subtotal                 : %d\n", tambah_dtpsn.subtotal_harga);
            fprintf(baru,"\n");
            test=1;
            //total+= tambah_dtpsn.subtotal_harga-1;
@@ -1047,15 +870,7 @@ void cetakdata_psn(){
 	fclose(lama1);
 	//fclose(baru);
 	if(test == 1){
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           >,<  DATA SUDAH DICETAK   >,<         ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+        printf("Mantap");
 	}
 
 
@@ -1119,14 +934,7 @@ void hapusdata_psn(){
 	lama = fopen("Data Pemesanan.txt","r");
 	baru = fopen("Data Pemesanan Update.txt","w");
 	system("cls");
-    printf("\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t|                   LalaFund Land                 |\n");
-    printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\t|            H A P U S   P E M E S A N A N        |\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t+=================================================+\n\n");
-	printf("\t\t\t\tSilahkan Masukkan ID Pemesanan yang akan di Hapus : ");
+	printf("Silahkan Masukkan ID Pemesanan yang akan di hapus : ");
 	scanf("%d", &hapus_psn.id_psn);
 	while(fscanf (lama,"%d;%[^;];\n",&tambah_psn.id_psn,tambah_psn.nama_psn)!=EOF)
 	{
@@ -1136,10 +944,8 @@ void hapusdata_psn(){
 		}
 		else{
 			test++;
-            printf("\t\t\t\t+-------------------------------------------------+\n");
-			printf("\n\t\t\t\tData Pemesanan No ID : %d ||  Nama Pemesan : %s\n",tambah_psn.id_psn,tambah_psn.nama_psn);
-            printf("\t\t\t\t+-------------------------------------------------+\n");
-            printf("\t\t\t\t(✿◕‿◕✿) Data Pemesanan Sudah Berhasil Terhapus dari Daftar (✿◕‿◕✿)");
+			printf("\nData Pemesanan No ID : %d atas Nama Pemesan : %s\n",tambah_psn.id_psn,tambah_psn.nama_psn);
+			printf("\nSudah Berhasil Terhapus dari Daftar !");
 		}
 	}
 	fclose(lama);
@@ -1147,15 +953,7 @@ void hapusdata_psn(){
 	remove("Data Pemesanan.txt");
 	rename("Data Pemesanan Update.txt","Data Pemesanan.txt");
     if(test==0){
-        printf("\t\t\t\t||=================================================||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||=================================================||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||           U_U  DATA TIDAK DITEMUKAN  U_U        ||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||=================================================||\n");
+        printf("\nData tidak dapat ditemukan !\a\a\a");
         erase_invalid();
     }
     else{
@@ -1165,35 +963,19 @@ void hapusdata_psn(){
 
 void erase_invalid(){
     int pilihan;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Silahkan Ulangi");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/0] :");
-    pilih=validasibilangan();
-    switch(pilih){
-        case 1:
-            hapusdata_psn();
+    printf("\nInput 1 untuk mencoba lagi, 2 untuk ke menu utama and 0 untuk keluar :");
+    pilihan=validasibilangan();
+    switch(pilihan){
+    	case 1:
+    	    hapusdata_psn();
+        break;
+        case 2:
+            pesanan();
         break;
         case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
             exit(0);
-        break;
         default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH    U_U        ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+            printf("\nMaaf Kesalahan Input !");
         	erase_invalid();
         break;
     }
@@ -1201,35 +983,14 @@ void erase_invalid(){
 
 void erase_valid(){
     int pilihan;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Hapus Data Next ");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
+    printf("\nInput 1 untuk lanjut menghapus data :");
     pilihan=validasibilangan();
     switch(pilihan){
-        case 1:
-            editdatadt_psn();
-        break;
-        case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
-            exit(0);
+    	case 1:
+    	    hapusdatadt_psn();
         break;
         default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U         ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+            printf("\nMaaf Kesalahan Input !");
         	erase_valid();
         break;
     }
@@ -1242,14 +1003,7 @@ void hapusdatadt_psn(){
 	lama = fopen("Data Detail Pemesanan.txt","r");
 	baru = fopen("Data Detail Pemesanan Update.txt","w");
 	system("cls");
-    printf("\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t|                   LalaFund Land                 |\n");
-    printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\t|              H A P U S   D E T A I L            |\n");
-    printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t+=================================================+\n\n");
-    printf("Silahkan Masukkan Detail ID Pemesanan yang akan di Hapus : ");
+	printf("Silahkan Masukkan Detail ID Pemesanan yang akan di hapus : ");
 	scanf("%d", &hapus_dtpsn.id_det_psn);
 	while(fscanf (lama,"%d;%d;%d;%d;%d;%d;%d;%[^\n];%[^\n]\n",&tambah_dtpsn.id_det_psn,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn)!=EOF)
 	{
@@ -1260,10 +1014,8 @@ void hapusdatadt_psn(){
 		}
 		else{
 			test++;
-            printf("\t\t\t\t+-------------------------------------------------+\n");
-			printf("\n\t\t\t\tData Detail Pemesanan No ID : %d || ID Pemesanan : %d\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan);
-            printf("\t\t\t\t+-------------------------------------------------+\n");
-            printf("\t\t\t\t(✿◕‿◕✿) Data Detail Pemesanan Sudah  Berhasil Terhapus dari Daftar (✿◕‿◕✿)");
+			printf("\nData Detail Pemesanan No ID : %d dengan ID Pemesanan : %d\n",tambah_dtpsn.id_det_psn,tambah_dtpsn.id_pemesanan);
+			printf("\nSudah Berhasil Terhapus dari Daftar !");
 		}
 	}
 	fclose(lama);
@@ -1271,15 +1023,7 @@ void hapusdatadt_psn(){
 	remove("Data Detail Pemesanan.txt");
 	rename("Data Detail Pemesanan Update.txt","Data Detail Pemesanan.txt");
     if(test==0){
-        printf("\t\t\t\t||=================================================||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||=================================================||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||           U_U  DATA TIDAK DITEMUKAN  U_U        ||\n");
-        printf("\t\t\t\t||                                                 ||\n");
-        printf("\t\t\t\t||=================================================||\n");
+        printf("\nData tidak dapat ditemukan !\a\a\a");
         erase_dtinvalid();
     }
     else{
@@ -1289,35 +1033,19 @@ void hapusdatadt_psn(){
 
 void erase_dtinvalid(){
     int pilihan;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Ulangi Hapus Data Detail Lagi ");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
+    printf("\nInput 1 untuk mencoba lagi, 2 untuk ke menu utama and 0 untuk keluar :");
     pilihan=validasibilangan();
     switch(pilihan){
-        case 1:
-            hapus_dtpsn();
+    	case 1:
+    	    hapusdatadt_psn();
+        break;
+        case 2:
+            pesanan();
         break;
         case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
             exit(0);
-        break;
         default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+            printf("\nMaaf Kesalahan Input !");
         	erase_dtinvalid();
         break;
     }
@@ -1325,43 +1053,17 @@ void erase_dtinvalid(){
 
 void erase_dtvalid(){
     int pilihan;
-    printf("\n\t\t\t\t+..................................................+\n");
-    printf("\n\t\t\t\t[1] Hapus Data Detail Lagi ");
-    printf("\n\t\t\t\t[2] Hapus Pemesanan ");
-    printf("\n\t\t\t\t[3] Menu Utama");
-    printf("\n\t\t\t\t[0] Keluar          ");
-    printf("\n\t\t\t\t+=================================================+\n");
-    printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
+    printf("\nInput 1 untuk ke menu utama and 0 untuk keluar :");
     pilihan=validasibilangan();
     switch(pilihan){
-        case 1:
-            hapus_dtpsn();
-        break;
-        case 2:
-            hapus_psn();
-        break;
-        case 3:
-            pesanan();
+    	case 1:
+    	    pesanan();
         break;
         case 0:
-            printf("\t\t\t\t+=================================================+\n");
-            printf("\t\t\t\t|                     PROGRAM                     |\n");
-            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
-            printf("\t\t\t\t|.................................................|\n");
-            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
-            printf("\t\t\t\t+=================================================+\n\n");
             exit(0);
         break;
         default:
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||                  PEMBERITAHUAN                  ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U         ||\n");
-            printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||=================================================||\n");
+            printf("\nMaaf Kesalahan Input !");
         	erase_dtvalid();
         break;
     }

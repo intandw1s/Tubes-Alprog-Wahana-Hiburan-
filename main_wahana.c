@@ -12,7 +12,6 @@
 //MAIN
 int main(){
     system("COLOR 71");
-    //test();
     masuk();
     system("pause");
     return 0;

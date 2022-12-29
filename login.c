@@ -3,7 +3,7 @@
 #include <math.h>
 #include <string.h>
 #include "menu_utama.c"
-#include "./admin/crud_admin.c"
+#include "crud_admin.c"
 
 void masuk(){
 
@@ -17,9 +17,9 @@ void masuk(){
     printf("\t\t\t\t|=================================================|\n");
     printf("\t\t\t\t|          SILAHKAN LOGIN TERLEBIH DAHULU         | \n");
     printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\t  Masukkan username     :");
+    printf("\t\t\t\t  Masukkan Username     :");
     scanf("%s", username);
-    printf("\t\t\t\t  Masukkan password     :");
+    printf("\t\t\t\t  Masukkan Password     :");
     fflush(stdin);
 	scanf("%s", password);
     printf("\t\t\t\t...................................................\n");
@@ -32,9 +32,12 @@ void masuk(){
 
 	} else {
         getchar();
-		printf("\t\t\t\t MAAF USERNAME ATAU PASSWORD ANDA SALAH :( \n");
-        printf("\t\t\t\t Tekan enter untuk mencoba kembali");
-        printf("\t\t\t\t---------------------------------------------------\n");
+		printf("\t\t\t\t+=================================================+\n");
+        printf("\t\t\t\t|                  ^.^ M A A F ^.^                |\n");
+        printf("\t\t\t\t|             USERNAME // PASSWORD SALAH          |\n");
+        printf("\t\t\t\t|.................................................|\n");
+        printf("\t\t\t\t|         ^o^ SILAHKAN  INPUTKAN KEMBALI ^v^      |\n");
+        printf("\t\t\t\t+=================================================+\n\n");
         getchar();
         masuk();
 

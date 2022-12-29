@@ -14,7 +14,7 @@ struct tb_wahana {
 }tambah,cek,hapus,sort[100],temp;
 
 
-float validasiBil1(){
+float validasiangka(){
     int i = 0;
     int salah =0;
     int titik=0;
@@ -65,12 +65,12 @@ float validasiBil1(){
 }*/
 void wahanaAdmin(){
     int pilihan;
-    printf("\t\t\t\t+-------------------------------------------------+\n");
+    printf("\t\t\t\t+=================================================+\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t|                  LalaFund  Land                 |\n");
     printf("\t\t\t\t|                   Tabel Wahana                  |\n");
     printf("\t\t\t\t|                                                 |\n");
-    printf("\t\t\t\t+-------------------------------------------------+\n");
+    printf("\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tPilihan Tabel Wahana :\n\n");
     printf("\n\t\t\t\t[1]. Tambah Data Wahana");
     printf("\n\t\t\t\t[2]. Edit Data Wahana");
@@ -98,6 +98,12 @@ void wahanaAdmin(){
             hapusdata();
         break;
         case 5:
+            printf("\t\t\t\t+=================================================+\n");
+            printf("\t\t\t\t|                     PROGRAM                     |\n");
+            printf("\t\t\t\t|                  TELAH BERHENTI                 |\n");
+            printf("\t\t\t\t|.................................................|\n");
+            printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
+            printf("\t\t\t\t+=================================================+\n\n");
             exit(1);
         break;
 	    default:
@@ -107,7 +113,7 @@ void wahanaAdmin(){
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
             printf("\t\t\t\t||                                                 ||\n");
-            printf("\t\t\t\t||             PILIHAN TIDAK TERSEDIA ^.^          ||\n");
+            printf("\t\t\t\t||         ^.^ PILIHAN TIDAK TERSEDIA ^.^          ||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
             sleep(3);
@@ -129,15 +135,22 @@ void tambahdata(){
 		}
 		//cek.id = tambah.id;
 		fclose(ptr1);
-		printf ("masukan id wahana : ");fflush(stdin);
+		printf("\t\t\t\t+=================================================+\n");
+        printf("\t\t\t\t|                                                 |\n");
+        printf("\t\t\t\t|                   LalaFund Land                 |\n");
+        printf("\t\t\t\t+-------------------------------------------------+\n");
+        printf("\t\t\t\t|          T A M B A H  D A T A  W A H A N A      |\n");
+        printf("\t\t\t\t|                                                 |\n");
+        printf("\t\t\t\t+=================================================+\n");
+		printf ("Masukan ID Wahana : ");fflush(stdin);
         tambah.id=validasiBil1();
-		printf ("masukan nama wahana : ");fflush(stdin);
+		printf ("Masukan Nama Wahana : ");fflush(stdin);
         scanf ("%[^\n]",tambah.nama);
-		printf ("masukan kategori wahana : ");fflush(stdin);
+		printf ("Masukan Ktegori Wahana : ");fflush(stdin);
 		tambah.kategori=validasiBil1();
-		printf ("masukan harga domestik : ");fflush(stdin);
+		printf ("Masukan Harga Domestik : ");fflush(stdin);
 		tambah.prc_dom=validasiBil1();
-		printf ("masukan harga internasional : ");fflush(stdin);
+		printf ("Masukan Harga Internasional : ");fflush(stdin);
 		tambah.prc_inter=validasiBil1();
 		fprintf(ptr,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
 		fclose(ptr);
