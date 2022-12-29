@@ -5,8 +5,8 @@
 				+========================================================================+
 
 				 Thu Dec 29 23:06:03 2022
-				 ID Pemesanan       : 1
-				 Nama Pemesan       : Lili
+				 ID Pemesanan           : 1
+				 Nama Pemesan           : Lili
 				 ID Detail Pemesanan    : 1
 				 ID Pemesanan           : 1
 				 Nama Wahana            : Outbound Games Kids
