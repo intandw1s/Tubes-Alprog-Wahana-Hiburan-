@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <conio.h>
+#include <time.h>
+#include <windows.h>
 #include "crud_wahana.c"
 #include "crud_pemesanan.c"
 
@@ -52,9 +55,9 @@ float validasipil(){
     }
 }
 
-int main(){
+/*int main(){
     menuadmin();
-}
+}*/
 
     printf("\t\t\t\t+===========================================================================+\n");
     printf("\t\t\t\t|           	           Om swastyastu! Hi! Ni Hao!                       |\n");

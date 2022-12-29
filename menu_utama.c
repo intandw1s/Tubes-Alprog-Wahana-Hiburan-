@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <conio.h>
+#include <time.h>
+#include <windows.h>
 #include "crud_wahana.c"
 #include "crud_pemesanan.c"
 
@@ -126,7 +129,7 @@ void menu(){
             printf("\t\t\t\t|.................................................|\n");
             printf("\t\t\t\t|    ^o^ TERIMAKASIH ATAS KERJA KERAS ANDA ^v^    |\n");
             printf("\t\t\t\t+=================================================+\n\n");
-            exit(0):
+            exit(0);
         break;
 	    default:
             printf("\t\t\t\t||=================================================||\n");

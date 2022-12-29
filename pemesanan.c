@@ -56,9 +56,9 @@ float validasiBil(){
     }
 }
 
-int main(){
+/*int main(){
     pesan1();
-}
+}*/
 void pesan1(){
     int pilihan;
 

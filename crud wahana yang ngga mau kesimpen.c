@@ -89,7 +89,7 @@ struct dt_pemesanan {
 
 
 
-float validasibilangan(){
+float validasiangka(){
     int i = 0;
     int salah =0;
     int titik=0;
@@ -128,11 +128,16 @@ float validasibilangan(){
         printf("\t\t\t\t||                                                 ||\n");
         printf("\t\t\t\t||=================================================||\n");
         printf("\t\t\t\t  Silahkan Masukkan Ulang : ");
-        validasibilangan();
+        validasiangka();
     }else{
         val = atof(angka);
         return val;
     }
+}
+
+int main(){
+    pesanan();
+
 }
 
 void pesanan(){
@@ -156,7 +161,7 @@ void pesanan(){
     printf("\n\t\t\t\t[0] Keluar");
     printf("\n\t\t\t\t--------------------------------------------------\n");
     printf("\t\t\t\tMasukkan Pilihan Anda :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     printf("\n");
     system("cls");
 
@@ -248,7 +253,7 @@ void add_done(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
     printf("\t\t\t\t Masukkan '1' untuk ke menu selanjutnya : ");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             dtpsn_tambah();
@@ -295,23 +300,25 @@ void dtpsn_tambah(){
         printf("\t\t\t\t+=================================================+\n");
 		printf ("\t\t\t\tMasukkan ID Pemesanan : ");
 		fflush(stdin);
-		tambah_dtpsn.id_pemesanan = validasibilangan();
+		tambah_dtpsn.id_pemesanan = validasiangka();
 		printf ("\t\t\t\tMasukan ID Wahana : ");
 		fflush(stdin);
         scanf ("%[^\n]",tambah_dtpsn.id_wahana);
+        if (tambah_dtpsn.id_wahana==11||tambah_dtpsn.id_wahana==12||tambah_dtpsn.id_wahana==13||tambah_dtpsn.id_wahana==31||tambah_dtpsn.id_wahana==32||tambah_dtpsn.id_wahana==33){
 		printf ("\t\t\t\tMasukkan Jumlah Anak Domestik : ");
 		fflush(stdin);
-		tambah_dtpsn.subtotal_anak_dom=validasibilangan();
+		tambah_dtpsn.subtotal_anak_dom=validasiangka();
 		printf ("\t\t\t\tMasukkan Jumlah Anak Internasional: ");
 		fflush(stdin);
-		tambah_dtpsn.subtotal_anak_inter=validasibilangan();
+		tambah_dtpsn.subtotal_anak_inter=validasiangka();
 		printf ("\t\t\t\tMasukkan Jumlah Dewasa Domestik : ");
 		fflush(stdin);
-		tambah_dtpsn.subtotal_dws_dom=validasibilangan();
+        }else(tambah_dtpsn.id_wahana==21||tambah_dtpsn.id_wahana==22||tambah_dtpsn.id_wahana==23||tambah_dtpsn.id_wahana==24||tambah_dtpsn.id_wahana==25||tambah_dtpsn.id_wahana==26||tambah_dtpsn.id_wahana==27||tambah_dtpsn.id_wahana==31||tambah_dtpsn.id_wahana==32||tambah_dtpsn.id_wahana==33);{
+		tambah_dtpsn.subtotal_dws_dom=validasiangka();
 		printf ("\t\t\t\tMasukkan Jumlah Dewasa Internasional : ");
 		fflush(stdin);
-		tambah_dtpsn.subtotal_dws_inter=validasibilangan();
-
+		tambah_dtpsn.subtotal_dws_inter=validasiangka();
+        }
 		subtotal= calstotal(tambah_dtpsn.id_wahana,tambah_dtpsn.subtotal_anak_dom,tambah_dtpsn.subtotal_anak_inter,tambah_dtpsn.subtotal_dws_dom,tambah_dtpsn.subtotal_dws_inter);
 		tambah_dtpsn.subtotal_harga = subtotal;
 		wahana_id=nm_wahana(tambah_dtpsn.id_wahana);
@@ -370,7 +377,7 @@ void add_done2(){
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\n\n\t\t\t\tMasukkan Pilihan Anda  : ");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             dtpsn_tambah();
@@ -531,7 +538,7 @@ void editdata_psn(){
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t+=================================================+\n");
 	printf("\t\t\t\tMasukan ID Pemesanan : ");
-	cek_psn.id_psn=validasibilangan();
+	cek_psn.id_psn=validasiangka();
 	while(fscanf (lama,"%d;%[^;];\n",&tambah_psn.id_psn,tambah_psn.nama_psn)!=EOF)
 	{
 		if(tambah_psn.id_psn == cek_psn.id_psn){
@@ -543,7 +550,7 @@ void editdata_psn(){
 				printf("\n\t\t\t\t[1]. Nama Pengguna");
                 printf("\t\t\t\t+-------------------------------------------------+\n");
 				printf("\n\t\t\t\tMasukkan Pilihan Anda  : ");
-                pilih=validasibilangan();
+                pilih=validasiangka();
 
 				if(pilih == 1)
 				{
@@ -590,21 +597,21 @@ void editdata_psn(){
             printf("\t\t\t\t||           U_U  DATA TIDAK DITEMUKAN  U_U        ||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
-            edit_psninvalid();
+            edit_invalid();
         }
     else{
-    	edit_psnvalid();
+    	edit_valid();
         }
     }
 
-void edit_psninvalid(){
+void edit_invalid(){
     int pilih;
     printf("\n\t\t\t\t+..................................................+\n");
     printf("\n\t\t\t\t[1] Silahkan Ulangi");
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/0] :");
-    pilih=validasibilangan();
+    pilih=validasiangka();
     switch(pilih){
         case 1:
             editdata_psn();
@@ -628,12 +635,12 @@ void edit_psninvalid(){
             printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
-            edit_psninvalid();
+            edit_invalid();
         break;
     }
 }
 
-void edit_psninvalid(){
+void edit_valid(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
     printf("\n\t\t\t\t[1] Edit Detail ");
@@ -642,7 +649,7 @@ void edit_psninvalid(){
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             editdatadt_psn();
@@ -672,7 +679,7 @@ void edit_psninvalid(){
             printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U          ||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
-            edit_psninvalid();
+            edit_valid();
         break;
     }
 }
@@ -695,7 +702,7 @@ void editdatadt_psn(){
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t+=================================================+\n");
 	printf("\t\t\t\tMasukan ID Detail Pemesanan : ");
-	cek_dtpsn.id_det_psn=validasibilangan();
+	cek_dtpsn.id_det_psn=validasiangka();
 	while(fscanf (lama,"%d;%d;%d;%d;%d;%d;%d;%[^\n];%[^\n]\n",&tambah_dtpsn.id_det_psn,&tambah_dtpsn.id_pemesanan,&tambah_dtpsn.subtotal_anak_dom,&tambah_dtpsn.subtotal_anak_inter,&tambah_dtpsn.subtotal_dws_dom,&tambah_dtpsn.subtotal_dws_inter,&tambah_dtpsn.subtotal_harga,tambah_dtpsn.id_wahana,tambah_dtpsn.nama_whn)!=EOF)
 	{
 		if(tambah_dtpsn.id_det_psn == cek_dtpsn.id_det_psn){
@@ -711,7 +718,7 @@ void editdatadt_psn(){
 				printf("\n\t\t\t\t[5]. Jumlah Dewasa [Domestik] ");
 				printf("\n\t\t\t\t[6]. Jumlah Dewasa [Internasional]");
 				printf("\n\t\t\t\tMasukkan Pilihan Anda    : ");
-                pilih=validasibilangan();
+                pilih=validasiangka();
 
 				if(pilih == 1)
 				{
@@ -739,7 +746,7 @@ void editdatadt_psn(){
 				{
                     printf("\n\t\t\t\t...................................................\n");
 					printf("\nMasukan Jumlah Anak [Domestik]       : ");fflush(stdin);
-					cek_dtpsn.subtotal_anak_dom=validasibilangan();
+					cek_dtpsn.subtotal_anak_dom=validasiangka();
 					tambah_dtpsn.subtotal_anak_dom = cek_dtpsn.subtotal_anak_dom;
 					//whn_id = tambah_dtpsn.id_wahana;
 					strncpy(whn_id,tambah_dtpsn.id_wahana,2);
@@ -753,7 +760,7 @@ void editdatadt_psn(){
 				{
                     printf("\n\t\t\t\t...................................................\n");
 					printf("\nMasukan Jumlah Anak [Internasional]   : ");fflush(stdin);
-					cek_dtpsn.subtotal_anak_inter=validasibilangan();
+					cek_dtpsn.subtotal_anak_inter=validasiangka();
 					tambah_dtpsn.subtotal_anak_inter = cek_dtpsn.subtotal_anak_inter;
 					strncpy(whn_id,tambah_dtpsn.id_wahana,2);
 					whn_id[2] = '\0';
@@ -766,7 +773,7 @@ void editdatadt_psn(){
 				{
                     printf("\n\t\t\t\t...................................................\n");
 					printf("\nMasukan Jumlah Dewasa [Domestik]      : ");fflush(stdin);
-                    cek_dtpsn.subtotal_dws_dom=validasibilangan();
+                    cek_dtpsn.subtotal_dws_dom=validasiangka();
 					tambah_dtpsn.subtotal_dws_dom=cek_dtpsn.subtotal_dws_dom;
                     strncpy(whn_id,tambah_dtpsn.id_wahana,2);
 					whn_id[2] = '\0';
@@ -779,7 +786,7 @@ void editdatadt_psn(){
 				{
                     printf("\n\t\t\t\t...................................................\n");
 					printf("\nMasukan Jumlah Dewasa [Internasional] : ");fflush(stdin);
-					cek_dtpsn.subtotal_dws_inter=validasibilangan();
+					cek_dtpsn.subtotal_dws_inter=validasiangka();
 					tambah_dtpsn.subtotal_dws_inter=cek_dtpsn.subtotal_dws_inter;
                     strncpy(whn_id,tambah_dtpsn.id_wahana,2);
 					whn_id[2] = '\0';
@@ -840,7 +847,7 @@ void editdt_invalid(){
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/0] :");
-    pilih=validasibilangan();
+    pilih=validasiangka();
     switch(pilih){
         case 1:
             editdatadt_psn();
@@ -878,7 +885,7 @@ void editdt_valid(){
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             editdatadt_psn();
@@ -1098,7 +1105,7 @@ void cetakdata_psn(){
 void list_invaliddt(){
     int pilihan;
     printf("\n\nEnter 1 untuk menu utama dan 0 untuk keluar : ");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
     	case 1:
     	    pesanan();
@@ -1156,21 +1163,21 @@ void hapusdata_psn(){
         printf("\t\t\t\t||           U_U  DATA TIDAK DITEMUKAN  U_U        ||\n");
         printf("\t\t\t\t||                                                 ||\n");
         printf("\t\t\t\t||=================================================||\n");
-        hapus_invalid();
+        erase_invalid();
     }
     else{
-    	hapus_valid();
+    	erase_valid();
         }
 }
 
-void hapus_invalid(){
+void erase_invalid(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
     printf("\n\t\t\t\t[1] Silahkan Ulangi");
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/0] :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             hapusdata_psn();
@@ -1194,22 +1201,22 @@ void hapus_invalid(){
             printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH    U_U        ||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
-        	hapus_invalid();
+        	erase_invalid();
         break;
     }
 }
 
-void hapus_valid(){
+void erase_valid(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
     printf("\n\t\t\t\t[1] Hapus Data Next ");
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
-            editdatadt_psn();
+            hapusdatadt_psn();
         break;
         case 0:
             printf("\t\t\t\t+=================================================+\n");
@@ -1230,7 +1237,7 @@ void hapus_valid(){
             printf("\t\t\t\t||           U_U  MAAF INPUTAN SALAH  U_U         ||\n");
             printf("\t\t\t\t||                                                 ||\n");
             printf("\t\t\t\t||=================================================||\n");
-        	hapus_valid();
+        	erase_valid();
         break;
     }
 }
@@ -1294,7 +1301,7 @@ void erase_dtinvalid(){
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             hapusdatadt_psn();
@@ -1332,10 +1339,10 @@ void erase_dtvalid(){
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
-            hapusdatadt_psn();
+            hapusdata_dtpsn();
         break;
         case 2:
             hapusdata_psn();
@@ -1366,6 +1373,4 @@ void erase_dtvalid(){
         break;
     }
 }
-/*int main(){
-    pesanan();
-}*/
+
