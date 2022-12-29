@@ -1,12 +1,12 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <conio.h>
 #include <time.h>
-#include <windows.h>
-#include "crud_wahana.c"
-#include "crud_pemesanan.c"
+#include <windows.h>*/
+//#include "crud_wahana.c"
+//#include "crud_pemesanan.c"
 
 int validasimenu() {
     int i = 0;
@@ -94,7 +94,7 @@ void intruksi(){
 //MENU UTAMA
 void menu(){
     int pilihan;
-
+    system("cls");
     printf("\t\t\t\t+=================================================+\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t|                  LalaFund Land                  |\n");

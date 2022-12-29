@@ -11,4 +11,3 @@
 31;Waterpark;3;35000;65000
 32;Outbound Family;3;50000;80000
 33;LalaFundFam;3;55000;85000
-

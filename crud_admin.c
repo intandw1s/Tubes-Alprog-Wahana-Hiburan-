@@ -1,12 +1,12 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <conio.h>
 #include <time.h>
-#include <windows.h>
-#include "crud_wahana.c"
-#include "crud_pemesanan.c"
+#include <windows.h>*/
+//#include "crud_wahana.c"
+//#include "crud_pemesanan.c"
 
 //Cek Bilangan
 float validasipil(){
@@ -58,7 +58,8 @@ float validasipil(){
 /*int main(){
     menuadmin();
 }*/
-
+int sekalimuncul = 0;
+void cover_admin(){
     printf("\t\t\t\t+===========================================================================+\n");
     printf("\t\t\t\t|           	           Om swastyastu! Hi! Ni Hao!                       |\n");
     printf("\t\t\t\t|              	       ^0^ S E L A M A T  D A T A N G ^v^                   |\n");
@@ -67,11 +68,13 @@ float validasipil(){
     printf("\t\t\t\t|...........................................................................|\n");
     printf("\t\t\t\t|                                 A D M I N                                 |\n");
     printf("\t\t\t\t+===========================================================================+\n\n");
+    getch();
+    system("cls");
+}
 
-int sekalimuncul = 0;
 void menuadmin(){
     if (sekalimuncul != 1){
-    cover();
+    cover_admin();
     sekalimuncul=1;
     }
     int pilihan;
@@ -96,7 +99,7 @@ void menuadmin(){
            wahanaAdmin();
 	    break;
         case 2:
-            pesanan()
+            pesanan();
 	    break;
         case 4:
             printf("\t\t\t\t+=================================================+\n");

@@ -1,37 +1,40 @@
+				+=================================================+
+				|                                                 |
+				|                   LalaFund Land                 |
+				+-------------------------------------------------+
+				|            D A T A   P E M E S A N A N          |
+				|                                                 |
+				+=================================================+
+
+				 Thu Dec 29 23:07:20 2022
+
+				||------------------------------------------------||
+				                   Data Transaksi                   
+				||------------------------------------------------||
+				 ID Pemesanan      : 1
+				 Nama Pemesan      : Lili
 
 
+				||------------------------------------------------||
+				                Data Detail Transaksi                 
+				||------------------------------------------------||
+				ID Detail Pemesanan   : 1
+				ID Pemesanan          : 1
+				Nama Wahana           : Outbound Games Kids
+				Subtotal              : 520000
 
+				ID Detail Pemesanan   : 2
+				ID Pemesanan          : 1
+				Nama Wahana           : Waterpark
+				Subtotal              : 200000
 
-			 Data Transaksi      
+				ID Detail Pemesanan   : 3
+				ID Pemesanan          : 1
+				Nama Wahana           : LalaFundPark
+				Subtotal              : 520000
 
-			 Wed Dec 28 19:44:37 2022
-			 ID Pemesanan      : 2
-			 Nama Pemesan      : yuta
-
-			 ID Pemesanan      : 3
-			 Nama Pemesan      : yuna
-
-
-
-			 Data Detail Transaksi      
-
-			 ID Detail Pemesanan      : 2
-			 ID Pemesanan             : 2
-			 Nama Wahana              : Waterpark
-			 Subtotal                 : 500000
-
-			 ID Detail Pemesanan      : 3
-			 ID Pemesanan             : 3
-			 Nama Wahana              : Outbound Games Kids
-			 Subtotal                 : 700000
-
-			 ID Detail Pemesanan      : 4
-			 ID Pemesanan             : 2
-			 Nama Wahana              : LalaFundPark
-			 Subtotal                 : 150000
-
-			 ID Detail Pemesanan      : 5
-			 ID Pemesanan             : 2
-			 Nama Wahana              : Outbound Games Kids
-			 Subtotal                 : 160000
+				ID Detail Pemesanan   : 4
+				ID Pemesanan          : 1
+				Nama Wahana           : Lazy River
+				Subtotal              : 45000
 

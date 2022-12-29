@@ -1,4 +1,4 @@
-2;2;0;0;5;0;250000;21;Waterpark
-3;3;5;3;0;0;700000;12;Outbound Games Kids
-4;2;9;0;0;0;450000;11;Waterpark
-5;2;2;0;0;0;160000;12;Outbound Games Kids
+1;1;4;2;0;0;520000;12;Outbound Games Kids
+2;1;0;0;2;0;200000;21;Waterpark
+3;1;4;2;0;0;520000;13;LalaFundPark
+4;1;0;0;1;0;45000;24;Lazy River

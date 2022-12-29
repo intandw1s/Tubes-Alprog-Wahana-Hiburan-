@@ -1,11 +1,11 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <conio.h>
 #include <time.h>
-#include <windows.h>
-#include "menu_utama.c"
+#include <windows.h>*/
+//#include "menu_utama.c"
 
 //struct
 struct tb_wahana {
@@ -159,7 +159,7 @@ void tambahdata(){
 		fclose(ptr);
 
         printf("\n\n\t\t\t\t+..................................................+\n");
-		printf("\t\t\t\t(✿◕‿◕✿) Data Wahana Sudah Disimpan (✿◕‿◕✿)");
+		printf("\t\t\t\t^,^ Data Wahana Sudah Disimpan ^,^");
 		add_valid();
 }
 
@@ -221,6 +221,7 @@ void add_valid(){
         break;
 
     }
+    }
 }
 
 void editdata(){
@@ -233,7 +234,7 @@ void editdata(){
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t|                   LalaFund Land                 |\n");
     printf("\t\t\t\t+-------------------------------------------------+\n");
-    printf("\t\t\t\t|          T A M B A H  D A T A  W A H A N A      |\n");
+    printf("\t\t\t\t|          E D I T  D A T A  W A H A N A          |\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t+=================================================+\n");
 	printf("\t\t\t\tMasukkan ID Wahana : ");
@@ -251,7 +252,7 @@ void editdata(){
 				printf("\n\t\t\t\t[2]. Kategori Wahana");
 				printf("\n\t\t\t\t[3]. Harga Domestik");
 				printf("\n\t\t\t\t[4]. Harga Internasional");
-                printf("\t\t\t\t+-------------------------------------------------+\n");
+                printf("\n\t\t\t\t+-------------------------------------------------+\n");
 				printf("\t\t\t\tMasukkan Pilihan Anda  : ");
                 pilih=validasiangka();
 
@@ -263,7 +264,7 @@ void editdata(){
 					strcpy(tambah.nama,cek.nama);
                     printf(baru,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
                     printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Wahana Sudah Disimpan (✿◕‿◕✿)");
+                    printf("\t\t\t\t^,^ Data Wahana Sudah Disimpan ^,^");
 				}
 				else if (pilih == 2)
 				{
@@ -273,7 +274,7 @@ void editdata(){
 					tambah.kategori = cek.kategori;
                     fprintf(baru,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
 					printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Wahana Sudah Disimpan (✿◕‿◕✿)");
+                    printf("\t\t\t\t^,^ Data Wahana Sudah Disimpan ^,^");
 				}
 				else if (pilih == 3)
 				{
@@ -283,7 +284,7 @@ void editdata(){
 					tambah.prc_dom = cek.prc_dom;
                     fprintf(baru,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
 					printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Wahana Sudah Disimpan (✿◕‿◕✿)");
+                    printf("\t\t\t\t^,^ Data Wahana Sudah Disimpan ^,^");
 				}
                 else if (pilih == 4)
 				{
@@ -293,7 +294,7 @@ void editdata(){
 					tambah.prc_inter = cek.prc_inter;
                     fprintf(baru,"%d;%s;%d;%d;%d\n",tambah.id,tambah.nama,tambah.kategori,tambah.prc_dom,tambah.prc_inter);
 					printf("\n\t\t\t\t+..................................................+\n");
-                    printf("\t\t\t\t(✿◕‿◕✿) Data Wahana Sudah Disimpan (✿◕‿◕✿)");
+                    printf("\t\t\t\t^,^ Data Wahana Sudah Disimpan ^,^");
 				}
 				else{
 					printf("\t\t\t\t||=================================================||\n");
@@ -380,7 +381,7 @@ void edit_valid(){
     printf("\n\t\t\t\t[0] Keluar          ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\tSilahkan Masukkan Pilihan Anda [1/2/3/0] :");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             editdata();
@@ -417,20 +418,20 @@ void lihatdata(){
 	view = fopen("Data Wahana.txt","r");
 	int test=0;
 	system ("cls");
+    printf("\t\t\t\t+=================================================+\n");
+    printf("\t\t\t\t|                                                 |\n");
+    printf("\t\t\t\t|                   LalaFund Land                 |\n");
+    printf("\t\t\t\t+-------------------------------------------------+\n");
+    printf("\t\t\t\t|               D A T A  W A H A N A              |\n");
+    printf("\t\t\t\t|                                                 |\n");
+    printf("\t\t\t\t+=================================================+\n\n");
 	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 	{
-        printf("\t\t\t\t+=================================================+\n");
-        printf("\t\t\t\t|                                                 |\n");
-        printf("\t\t\t\t|                   LalaFund Land                 |\n");
-        printf("\t\t\t\t+-------------------------------------------------+\n");
-        printf("\t\t\t\t|               D A T A  W A H A N A              |\n");
-        printf("\t\t\t\t|                                                 |\n");
-        printf("\t\t\t\t+=================================================+\n\n");
         printf("\t\t\t\tID Wahana               : %d\n", tambah.id);
         printf("\t\t\t\tNama Wahana             : %s\n", tambah.nama);
         printf("\t\t\t\tKategori                : %d\n", tambah.kategori);
         printf("\t\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
-        printf("\t\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
+        printf("\t\t\t\tHarga Internasional     : %d\n", tambah.prc_inter);
         printf("\t\t\t\t..................................................\n\n");
             test++;
 
@@ -459,25 +460,26 @@ void datalihat(){
 	view = fopen("Data Wahana.txt","r");
 	int test=0;
 	system ("cls");
+	printf("\t\t\t\t+=================================================+\n");
+    printf("\t\t\t\t|                                                 |\n");
+    printf("\t\t\t\t|                   LalaFund Land                 |\n");
+    printf("\t\t\t\t+-------------------------------------------------+\n");
+    printf("\t\t\t\t|               D A T A  W A H A N A              |\n");
+    printf("\t\t\t\t|                                                 |\n");
+    printf("\t\t\t\t+=================================================+\n\n");
 	while (fscanf (view,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 	{
-        printf("\t\t\t\t+=================================================+\n");
-        printf("\t\t\t\t|                                                 |\n");
-        printf("\t\t\t\t|                   LalaFund Land                 |\n");
-        printf("\t\t\t\t+-------------------------------------------------+\n");
-        printf("\t\t\t\t|               D A T A  W A H A N A              |\n");
-        printf("\t\t\t\t|                                                 |\n");
-        printf("\t\t\t\t+=================================================+\n\n");
+
         printf("\t\t\t\tID Wahana               : %d\n", tambah.id);
         printf("\t\t\t\tNama Wahana             : %s\n", tambah.nama);
         printf("\t\t\t\tKategori                : %d\n", tambah.kategori);
         printf("\t\t\t\tHarga Domestik          : %d\n", tambah.prc_dom);
-        printf("\t\t\t\tHarga Internasional     : %d\n", tambah.prc_dom);
+        printf("\t\t\t\tHarga Internasional     : %d\n", tambah.prc_inter);
         printf("\t\t\t\t..................................................\n\n");
             test++;
 	}
-	printf ("\n\t\t\t\t\tJumlah Wahana : %d",test);
-    printf("\t\t\t\t+=================================================+\n\n");
+	printf ("\n\t\t\t\tJumlah Wahana : %d",test);
+    printf("\n\t\t\t\t+=================================================+");
 	fclose(view);
 
 	if(test==0)
@@ -499,10 +501,10 @@ void datalihat(){
 void list_invalid(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
-    printf("\t\t\t\t [1] Menu Utama  : ");
-    printf("\t\t\t\t [0] Keluar      : ");
+    printf("\n\t\t\t\t [1] Menu Utama  : ");
+    printf("\n\t\t\t\t [0] Keluar      : ");
     printf("\t\t\t\t Masukkan Pilihan Anda  : ");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             wahanaAdmin();
@@ -532,11 +534,12 @@ void list_invalid(){
 }
 
 void list_invalid1(){
+    int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
-    printf("\t\t\t\t [1] Menu Utama  : ");
-    printf("\t\t\t\t [0] Keluar      : ");
-    printf("\t\t\t\t Masukkan Pilihan Anda  : ");
-    pilihan=validasibilangan();
+    printf("\n\t\t\t\t [1] Menu Utama  : ");
+    printf("\n\t\t\t\t [0] Keluar      : ");
+    printf("\n\t\t\t\t Masukkan Pilihan Anda  : ");
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             menu();
@@ -595,7 +598,7 @@ void hapusdata(){
     printf("\t\t\t\t|          H A P U S  D A T A  W A H A N A        |\n");
     printf("\t\t\t\t|                                                 |\n");
     printf("\t\t\t\t+=================================================+\n\n");
-	printf("Masukkan ID Wahana yang akan di Hapus : ");
+	printf("\t\t\t\tMasukkan ID Wahana yang akan di Hapus : ");
 	scanf("%d", &hapus.id);
 	while(fscanf (lama,"%d;%[^;];%d;%d;%d\n",&tambah.id,tambah.nama,&tambah.kategori,&tambah.prc_dom,&tambah.prc_inter)!=EOF)
 	{
@@ -606,9 +609,9 @@ void hapusdata(){
 		else{
 			test++;
             printf("\t\t\t\t+-------------------------------------------------+\n");
-			printf("\nData Wahana No ID : %d dengan Nama : %s\n",tambah.id,tambah.nama);
+			printf("\n\t\t\t\tData Wahana No ID : %d dengan Nama : %s\n",tambah.id,tambah.nama);
             printf("\n\t\t\t\t+..................................................+\n");
-            printf("\t\t\t\t(✿◕‿◕✿) Data Berhasil Terhapus dari Daftar (✿◕‿◕✿)");
+            printf("\t\t\t\t^,^ Data Berhasil Terhapus dari Daftar ^,^");
 		}
 	}
 	fclose(lama);
@@ -635,12 +638,12 @@ void hapusdata(){
 void erase_invalid(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
-    printf("\t\t\t\t [1] Ulangi      : ");
-    printf("\t\t\t\t [2] Menu Utama  : ");
-    printf("\t\t\t\t [0] Keluar      : ");
+    printf("\n\t\t\t\t [1] Ulangi      : ");
+    printf("\n\t\t\t\t [2] Menu Utama  : ");
+    printf("\n\t\t\t\t [0] Keluar      : ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\t Masukkan Pilihan Anda  : ");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             hapusdata();
@@ -675,12 +678,12 @@ void erase_invalid(){
 void erase_valid(){
     int pilihan;
     printf("\n\t\t\t\t+..................................................+\n");
-    printf("\t\t\t\t [1] Ulangi      : ");
-    printf("\t\t\t\t [2] Menu Utama  : ");
-    printf("\t\t\t\t [0] Keluar      : ");
+    printf("\n\t\t\t\t [1] Ulangi      : ");
+    printf("\n\t\t\t\t [2] Menu Utama  : ");
+    printf("\n\t\t\t\t [0] Keluar      : ");
     printf("\n\t\t\t\t+=================================================+\n");
     printf("\t\t\t\t Masukkan Pilihan Anda  : ");
-    pilihan=validasibilangan();
+    pilihan=validasiangka();
     switch(pilihan){
         case 1:
             hapusdata();

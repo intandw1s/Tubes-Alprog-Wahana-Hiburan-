@@ -10,6 +10,10 @@
 #include <time.h>
 #include <windows.h>
 #include "login.c"
+#include "menu_utama.c"
+#include "crud_admin.c"
+#include "crud_wahana.c"
+#include "crud_pemesanan.c"
 
 //MAIN
 int main(){
